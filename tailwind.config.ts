@@ -12,9 +12,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Archivo', 'sans-serif'],
+        sans: ['Clash Display', 'sans-serif'],
+        display: ['Arboria', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
+        small: ['Clash Display', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
