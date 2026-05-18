@@ -33,7 +33,7 @@ const ComingSoon = () => {
         {/* Contato - Layout em Lista Clara */}
         <div className="space-y-4 mb-10">
           <a 
-            href="mailto:josemar@percettore.com.br"
+            href="mailto:contato@percettore.com.br"
             className="flex items-center gap-4 p-4 bg-black/80 backdrop-blur-sm rounded-lg hover:bg-black/90 transition-colors group"
           >
             <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
@@ -41,7 +41,7 @@ const ComingSoon = () => {
             </div>
             <div className="text-left">
               <div className="font-medium text-white">E-mail</div>
-              <div className="text-gray-400 text-sm">josemar@percettore.com.br</div>
+              <div className="text-gray-400 text-sm">contato@percettore.com.br</div>
             </div>
           </a>
 
@@ -55,7 +55,7 @@ const ComingSoon = () => {
               <Phone className="w-5 h-5 text-black" />
             </div>
             <div className="text-left">
-              <div className="font-medium text-white">WhatsApp</div>
+              <div className="font-medium text-white">Telefone</div>
               <div className="text-gray-400 text-sm">11 24470892</div>
             </div>
           </a>
