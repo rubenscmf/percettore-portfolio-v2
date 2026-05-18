@@ -56,7 +56,7 @@ const ComingSoon = () => {
             </div>
             <div className="text-left">
               <div className="font-medium text-white">Telefone</div>
-              <div className="text-gray-400 text-sm">11 24470892</div>
+              <div className="text-gray-400 text-sm">11 2447-0892</div>
             </div>
           </a>
         </div>
