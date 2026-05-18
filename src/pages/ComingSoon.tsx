@@ -11,10 +11,10 @@ const ComingSoon = () => {
         alt="Estrutura de concreto armado em construção pela Percettore"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      
+
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/70" />
-      
+
       {/* Content */}
       <div className="relative z-10 max-w-lg w-full">
         {/* Logo */}
@@ -32,7 +32,7 @@ const ComingSoon = () => {
 
         {/* Contato - Layout em Lista Clara */}
         <div className="space-y-4 mb-10">
-          <a 
+          <a
             href="mailto:contato@percettore.com.br"
             className="flex items-center gap-4 p-4 bg-black/80 backdrop-blur-sm rounded-lg hover:bg-black/90 transition-colors group"
           >
@@ -45,8 +45,8 @@ const ComingSoon = () => {
             </div>
           </a>
 
-          <a 
-            href="https://wa.me/551124470892"
+          <a
+            href="tel:551124470892"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 p-4 bg-black/80 backdrop-blur-sm rounded-lg hover:bg-black/90 transition-colors group"
@@ -70,7 +70,7 @@ const ComingSoon = () => {
             >
               <Linkedin className="w-6 h-6 text-white" />
             </div>
-            
+
             <a
               href="https://www.instagram.com/percettoreincorporacao"
               target="_blank"
