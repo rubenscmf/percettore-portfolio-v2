@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SectionLabel } from "@/components/SectionLabel";
+import { SpringCard } from "@/components/SpringCard";
 import { projects } from "@/data/projects";
 
 const Projects = () => {
@@ -31,7 +32,7 @@ const Projects = () => {
             <button
               key={c}
               onClick={() => setActive(c)}
-              className={`transition-colors ${active === c ? "text-primary" : "text-concrete-500 hover:text-foreground"}`}
+              className={`transition-colors ${active === c ? "text-primary font-bold" : "text-concrete-500 hover:text-foreground"}`}
             >
               {c}
             </button>
@@ -43,33 +44,34 @@ const Projects = () => {
       <section className="container pb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-20">
           {filtered.map((p, i) => (
-            <Link
-              key={p.slug}
-              to={`/projetos/${p.slug}`}
-              className={`group block ${i % 2 === 1 ? "md:mt-24" : ""}`}
-            >
-              <div className="overflow-hidden bg-concrete-100 aspect-[4/3] relative">
-                <img
-                  src={p.cover}
-                  alt={p.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                />
-                <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-widest px-2 py-1">
-                  {p.status}
-                </span>
-              </div>
-              <div className="mt-6 grid grid-cols-12 gap-3">
-                <div className="col-span-9">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-concrete-500 mb-2">
-                    {p.category} · {p.year}
-                  </div>
-                  <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight">{p.title}</h3>
-                  <p className="mt-2 text-sm text-concrete-500 italic">{p.type} · {p.location}</p>
+            <SpringCard key={p.slug} className={i % 2 === 1 ? "md:mt-24" : ""}>
+              <Link
+                to={`/projetos/${p.slug}`}
+                className="group block"
+              >
+                <div className="overflow-hidden bg-concrete-100 aspect-[4/3] relative">
+                  <img
+                    src={p.cover}
+                    alt={p.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                  />
+                  <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-widest px-2 py-1">
+                    {p.status}
+                  </span>
                 </div>
-                <div className="col-span-3 text-right font-mono text-[11px] text-primary">{p.index} / {String(projects.length).padStart(2, "0")}</div>
-              </div>
-            </Link>
+                <div className="mt-6 grid grid-cols-12 gap-3">
+                  <div className="col-span-9">
+                    <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-concrete-500 mb-2">
+                      {p.category} · {p.year}
+                    </div>
+                    <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight">{p.title}</h3>
+                    <p className="mt-2 text-sm text-concrete-500 italic">{p.type} · {p.location}</p>
+                  </div>
+                  <div className="col-span-3 text-right font-mono text-[11px] text-primary">{p.index} / {String(projects.length).padStart(2, "0")}</div>
+                </div>
+              </Link>
+            </SpringCard>
           ))}
         </div>
       </section>
