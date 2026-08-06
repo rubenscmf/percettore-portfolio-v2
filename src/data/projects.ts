@@ -148,9 +148,12 @@ export const projects: Project[] = [
     location: "Chapecó, SC",
     area: "9.377,98 m²",
     type: "Concreto Armado de Alta Resistência",
-    cover: "/Obra 21/1.jpg",
+    cover: "/Obra 21/1.png",
     gallery: [
-      "/Obra 21/1.jpg",
+      "/Obra 21/1.png",
+      "/Obra 21/2.png",
+      "/Obra 21/4.png",
+      "/Obra 21/7.png",
     ],
     summary:
       "Edifício de uso misto (residencial e comercial) com 9.377,98 m² assinado pela Construtora Santa Maria.",
@@ -174,9 +177,12 @@ export const projects: Project[] = [
     location: "Balneário Camboriú, SC",
     area: "2.400,00 m²",
     type: "57 Pavimentos · Concreto Armado",
-    cover: "/Obra Iconi/1.jpg",
+    cover: "/Obra Iconi/1.png",
     gallery: [
-      "/Obra Iconi/1.jpg",
+      "/Obra Iconi/1.png",
+      "/Obra Iconi/2.png",
+      "/Obra Iconi/3.png",
+      "/Obra Iconi/5.png",
     ],
     summary:
       "Arranha-céu icônico de 57 pavimentos projetado para a FG Empreendimentos no litoral catarinense.",
