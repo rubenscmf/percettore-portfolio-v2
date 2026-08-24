@@ -46,7 +46,7 @@ export const Header = () => {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-10 font-mono text-[11px] uppercase tracking-[0.2em]">
+        <nav className="hidden md:flex items-center gap-10 font-sans text-xs font-semibold uppercase tracking-wider">
           {links.map((l) => (
             <NavLink
               key={l.to}
@@ -78,7 +78,7 @@ export const Header = () => {
       </div>
 
       {open && (
-        <nav className="md:hidden bg-background border-t border-foreground/10 px-6 py-8 flex flex-col gap-6 font-mono text-sm uppercase tracking-widest shadow-2xl">
+        <nav className="md:hidden bg-background border-t border-foreground/10 px-6 py-8 flex flex-col gap-6 font-sans text-sm font-semibold uppercase tracking-wider shadow-2xl">
           {links.map((l) => (
             <NavLink
               key={l.to}

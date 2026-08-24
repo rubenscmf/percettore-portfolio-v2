@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { SectionLabel } from "@/components/SectionLabel";
-import { SpringCard } from "@/components/SpringCard";
+import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedStatCounter } from "@/components/AnimatedStatCounter";
 import { projects } from "@/data/projects";
 import hero from "@/assets/hero.jpg";
@@ -22,6 +22,7 @@ const Index = () => {
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
   const heroListRef = useRef<HTMLDivElement>(null);
   const heroSvgGridRef = useRef<SVGSVGElement>(null);
+  const credIndicatorsRef = useRef<HTMLDivElement>(null);
 
   const manifestoRef = useRef<HTMLDivElement>(null);
   const manifestoTitleRef = useRef<HTMLHeadingElement>(null);
@@ -59,12 +60,23 @@ const Index = () => {
       });
     }
 
-    // 2. GSAP SCROLLTRIGGER: High-Impact Video Parallax & Text Mask Reveals
+    // 2. HERO CREDIBILITY INDICATORS SEQUENTIAL FADE-IN
+    if (credIndicatorsRef.current) {
+      animate(credIndicatorsRef.current.children, {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: stagger(200, { start: 1000 }),
+        duration: 1000,
+        ease: "outExpo",
+      });
+    }
+
+    // 3. GSAP SCROLLTRIGGER: High-Impact Video Parallax & Smooth Concrete Transition
     const ctx = gsap.context(() => {
       if (heroVideoRef.current && heroSectionRef.current) {
         gsap.to(heroVideoRef.current, {
-          yPercent: 15,
-          scale: 1.12,
+          yPercent: 18,
+          scale: 1.1,
           ease: "none",
           scrollTrigger: {
             trigger: heroSectionRef.current,
@@ -75,7 +87,7 @@ const Index = () => {
         });
       }
 
-      // Manifesto high-impact reveal
+      // Manifesto high-impact reveal with smooth concrete backdrop transition
       if (manifestoRef.current) {
         gsap.fromTo(
           manifestoRef.current,
@@ -97,7 +109,7 @@ const Index = () => {
       if (featuredRef.current) {
         gsap.fromTo(
           featuredRef.current.children,
-          { opacity: 0, y: 80 },
+          { opacity: 0, y: 60 },
           {
             opacity: 1,
             y: 0,
@@ -130,6 +142,7 @@ const Index = () => {
           loop
           muted
           playsInline
+          preload="metadata"
           poster={hero}
           className="absolute inset-0 w-full h-full object-cover opacity-60 will-change-transform"
         >
@@ -156,7 +169,7 @@ const Index = () => {
           <circle cx="95%" cy="85%" r="6" fill="none" stroke="#ffffff" strokeWidth="1.5" />
         </svg>
 
-        <div className="relative z-20 container flex-1 flex flex-col justify-end pb-16 pt-32">
+        <div className="relative z-20 container flex-1 flex flex-col justify-end pb-12 pt-32">
           <div className="grid grid-cols-12 gap-6 items-end">
             <div className="col-span-12 lg:col-span-9">
               <SectionLabel index="01" className="text-background/70 mb-6">
@@ -164,7 +177,7 @@ const Index = () => {
               </SectionLabel>
               <h1
                 ref={heroTitleRef}
-                className="font-display font-extrabold text-[clamp(3rem,9vw,9rem)] leading-[0.88] tracking-tighter text-balance"
+                className="font-display font-extrabold text-[clamp(3rem,9vw,9rem)] leading-[0.88] tracking-tighter uppercase text-balance"
               >
                 ESTRUTURAS<br />DE <span className="text-primary">RIGOR</span>.
               </h1>
@@ -173,7 +186,7 @@ const Index = () => {
               <div className="absolute right-0 top-0 w-px h-full bg-primary animate-line" />
               <div
                 ref={heroListRef}
-                className="pl-6 pt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-background/70 leading-loose"
+                className="pl-6 pt-2 font-mono text-xs uppercase tracking-[0.2em] text-background/70 leading-loose"
               >
                 <div>[01] Fundação</div>
                 <div>[02] Superestrutura</div>
@@ -183,7 +196,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-12 gap-6 items-end">
+          <div className="mt-8 grid grid-cols-12 gap-6 items-end">
             <p className="col-span-12 md:col-span-6 lg:col-span-5 text-background/80 text-lg max-w-md text-pretty">
               Engenharia de precisão em concreto armado para projetos que desafiam a gravidade e
               definem o horizonte urbano.
@@ -197,24 +210,57 @@ const Index = () => {
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
             </Link>
           </div>
+
+          {/* CREDIBILITY INDICATORS OVERLAY WITH SEQUENTIAL FADE-IN */}
+          <div
+            ref={credIndicatorsRef}
+            className="mt-14 pt-6 border-t border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-6"
+          >
+            <div className="flex flex-col border-l-2 border-primary pl-4">
+              <span className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
+                15+ ANOS
+              </span>
+              <span className="font-mono text-xs uppercase tracking-[0.15em] text-background/80 mt-1 font-medium">
+                Atuação em Projetos Estruturais
+              </span>
+            </div>
+
+            <div className="flex flex-col border-l-2 border-white/30 pl-4">
+              <span className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
+                +540.000 m²
+              </span>
+              <span className="font-mono text-xs uppercase tracking-[0.15em] text-background/80 mt-1 font-medium">
+                Área Total Calculada & Projetada
+              </span>
+            </div>
+
+            <div className="flex flex-col border-l-2 border-white/30 pl-4">
+              <span className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
+                128+ OBRAS
+              </span>
+              <span className="font-mono text-xs uppercase tracking-[0.15em] text-background/80 mt-1 font-medium">
+                Alto Padrão & Infraestrutura
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* INTRO MANIFESTO */}
-      <section className="container py-32">
-        <div ref={manifestoRef} className="grid grid-cols-12 gap-6">
+      {/* INTRO MANIFESTO WITH CLEAN ELEGANT BACKGROUND */}
+      <section className="relative py-32 bg-background border-b border-foreground/10 overflow-hidden">
+        <div ref={manifestoRef} className="container relative z-10 grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-4">
             <SectionLabel index="02">Manifesto</SectionLabel>
           </div>
           <div className="col-span-12 md:col-span-8">
             <h2
               ref={manifestoTitleRef}
-              className="font-display text-4xl md:text-6xl leading-[1] tracking-tighter text-balance"
+              className="font-display font-bold text-4xl md:text-6xl uppercase leading-[0.95] tracking-tight text-balance"
             >
               Concreto não perdoa <span className="text-primary">erro de cálculo</span>. Por isso
               tratamos cada estrutura como obra única.
             </h2>
-            <p className="mt-10 max-w-2xl text-concrete-500 text-lg text-pretty">
+            <p className="mt-8 max-w-2xl text-concrete-700 text-lg md:text-xl leading-relaxed text-pretty font-normal">
               A Percettore é especialista em projetar e executar estruturas de concreto armado
               de alta complexidade. Trabalhamos com construtoras, incorporadoras e indústrias que
               exigem rigor técnico, previsibilidade de prazo e durabilidade comprovada.
@@ -223,12 +269,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FEATURED PROJECTS (REACT SPRING INTERACTIVE 3D CARDS) */}
-      <section className="container pb-32">
+      {/* FEATURED PROJECTS (EDITORIAL GRID WITH PROJECTCARD) */}
+      <section className="container py-32">
         <div className="flex items-end justify-between border-b border-foreground/15 pb-6 mb-16">
           <div>
             <SectionLabel index="03" className="mb-3">Selecionados</SectionLabel>
-            <h2 className="font-display text-3xl md:text-5xl uppercase tracking-tighter">
+            <h2 className="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight">
               Obras de Referência
             </h2>
           </div>
@@ -237,32 +283,9 @@ const Index = () => {
           </Link>
         </div>
 
-        <div ref={featuredRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
+        <div ref={featuredRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featured.map((p) => (
-            <SpringCard key={p.slug}>
-              <Link to={`/projetos/${p.slug}`} className="group block">
-                <div className="overflow-hidden bg-concrete-100 aspect-[4/5] relative rounded-sm">
-                  <img
-                    src={p.cover}
-                    alt={p.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                  />
-                  <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-widest px-2 py-1 shadow-md">
-                    {p.status}
-                  </span>
-                </div>
-                <div className="mt-6 flex justify-between items-start gap-4">
-                  <div>
-                    <h3 className="font-display text-xl uppercase tracking-tight group-hover:text-primary transition-colors">{p.title}</h3>
-                    <p className="mt-1 text-sm text-concrete-500 italic">
-                      {p.type} · {p.area}
-                    </p>
-                  </div>
-                  <span className="font-mono text-[11px] text-primary font-bold">{p.index}</span>
-                </div>
-              </Link>
-            </SpringCard>
+            <ProjectCard key={p.slug} project={p} totalProjects={projects.length} />
           ))}
         </div>
       </section>

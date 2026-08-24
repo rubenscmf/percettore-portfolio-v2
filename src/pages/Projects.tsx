@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SectionLabel } from "@/components/SectionLabel";
-import { SpringCard } from "@/components/SpringCard";
+import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
 
 const Projects = () => {
@@ -16,62 +15,50 @@ const Projects = () => {
   return (
     <Layout>
       <section className="container pt-40 pb-16">
-        <SectionLabel index="01" className="mb-6">Portfólio</SectionLabel>
-        <h1 className="font-display text-5xl md:text-8xl tracking-tighter leading-[0.92] text-balance">
-          Obras que <span className="text-primary">sustentam</span><br /> o horizonte.
+        <SectionLabel index="01" className="mb-6">Portfólio Editorial</SectionLabel>
+        <h1 className="font-display font-extrabold text-5xl md:text-8xl tracking-tighter leading-[0.88] uppercase text-balance">
+          OBRAS QUE <span className="text-primary">SUSTENTAM</span><br /> O HORIZONTE.
         </h1>
-        <p className="mt-8 max-w-2xl text-concrete-500 text-lg text-pretty">
-          Uma seleção de projetos onde aplicamos nossa expertise em concreto armado — da
-          fundação ao acabamento aparente.
+        <p className="mt-8 max-w-2xl text-concrete-700 text-lg md:text-xl leading-relaxed text-pretty">
+          Uma seleção rigorosa de projetos onde aplicamos engenharia de ponta em concreto armado — do cálculo de fundações profundas à superestrutura de edifícios de alta complexidade.
         </p>
       </section>
 
-      <div className="container border-t border-foreground/15 pt-6 pb-12">
-        <div className="flex flex-wrap gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.2em]">
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActive(c)}
-              className={`transition-colors ${active === c ? "text-primary font-bold" : "text-concrete-500 hover:text-foreground"}`}
-            >
-              {c}
-            </button>
-          ))}
-          <span className="ml-auto text-concrete-500">{filtered.length} projetos</span>
+      {/* CATEGORY FILTER BAR */}
+      <div className="sticky top-20 z-30 bg-background/90 backdrop-blur-md border-y border-foreground/10 py-5 my-8">
+        <div className="container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-2">
+            {categories.map((c) => {
+              const count = c === "Todos" ? projects.length : projects.filter((p) => p.category === c).length;
+              return (
+                <button
+                  key={c}
+                  onClick={() => setActive(c)}
+                  className={`font-mono text-xs uppercase tracking-[0.2em] px-4 py-2.5 transition-all duration-300 border ${
+                    active === c
+                      ? "bg-foreground text-background border-foreground font-bold shadow-md"
+                      : "bg-transparent text-concrete-700 border-foreground/15 hover:border-foreground/50 hover:text-foreground"
+                  }`}
+                >
+                  {c} <span className="text-[10px] opacity-70 ml-1">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-concrete-500 self-end sm:self-center">
+            Exibindo {filtered.length} de {projects.length} Obras
+          </span>
         </div>
       </div>
 
-      <section className="container pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-20">
+      {/* EDITORIAL GRID */}
+      <section className="container pb-32 pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
           {filtered.map((p, i) => (
-            <SpringCard key={p.slug} className={i % 2 === 1 ? "md:mt-24" : ""}>
-              <Link
-                to={`/projetos/${p.slug}`}
-                className="group block"
-              >
-                <div className="overflow-hidden bg-concrete-100 aspect-[4/3] relative">
-                  <img
-                    src={p.cover}
-                    alt={p.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                  />
-                  <span className="absolute top-4 left-4 bg-primary text-primary-foreground font-mono text-[10px] uppercase tracking-widest px-2 py-1">
-                    {p.status}
-                  </span>
-                </div>
-                <div className="mt-6 grid grid-cols-12 gap-3">
-                  <div className="col-span-9">
-                    <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-concrete-500 mb-2">
-                      {p.category} · {p.year}
-                    </div>
-                    <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight">{p.title}</h3>
-                    <p className="mt-2 text-sm text-concrete-500 italic">{p.type} · {p.location}</p>
-                  </div>
-                  <div className="col-span-3 text-right font-mono text-[11px] text-primary">{p.index} / {String(projects.length).padStart(2, "0")}</div>
-                </div>
-              </Link>
-            </SpringCard>
+            <div key={p.slug} className={i % 2 === 1 ? "md:mt-16" : ""}>
+              <ProjectCard project={p} totalProjects={projects.length} />
+            </div>
           ))}
         </div>
       </section>

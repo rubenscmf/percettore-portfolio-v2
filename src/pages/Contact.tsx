@@ -35,10 +35,10 @@ const Contact = () => {
             { k: "Horário", v: "Seg–Sex · 08h–18h" },
           ].map((c) => (
             <div key={c.k}>
-              <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-concrete-500 mb-2">
+              <div className="font-sans text-xs uppercase tracking-wider text-concrete-500 font-semibold mb-2">
                 {c.k}
               </div>
-              <div className="font-display text-xl whitespace-pre-line">{c.v}</div>
+              <div className="font-display text-xl whitespace-pre-line font-medium text-foreground">{c.v}</div>
             </div>
           ))}
         </div>
@@ -52,21 +52,21 @@ const Contact = () => {
           </div>
           <Field label="Tipo de Projeto" name="project" />
           <div>
-            <label className="font-mono text-[10px] uppercase tracking-[0.25em] text-concrete-500">
+            <label className="font-sans text-xs uppercase tracking-wider text-concrete-500 font-semibold">
               Mensagem
             </label>
             <textarea
               name="message"
               required
               rows={6}
-              className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-primary py-3 text-lg outline-none transition-colors resize-none"
+              className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-primary py-3 text-lg outline-none transition-colors resize-none font-sans"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="group inline-flex items-center gap-4 bg-foreground text-background px-8 py-5 font-mono text-xs uppercase tracking-[0.2em] hover:bg-primary transition-colors disabled:opacity-50"
+            className="group inline-flex items-center gap-4 bg-foreground text-background px-8 py-5 font-sans text-xs font-semibold uppercase tracking-wider hover:bg-primary transition-colors disabled:opacity-50"
           >
             {loading ? "Enviando…" : "Enviar Mensagem"}
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -98,14 +98,14 @@ const Field = ({
   required?: boolean;
 }) => (
   <div>
-    <label className="font-mono text-[10px] uppercase tracking-[0.25em] text-concrete-500">
+    <label className="font-sans text-xs uppercase tracking-wider text-concrete-500 font-semibold">
       {label}{required && <span className="text-primary"> *</span>}
     </label>
     <input
       name={name}
       type={type}
       required={required}
-      className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-primary py-3 text-lg outline-none transition-colors"
+      className="mt-2 w-full bg-transparent border-b border-foreground/30 focus:border-primary py-3 text-lg outline-none transition-colors font-sans"
     />
   </div>
 );

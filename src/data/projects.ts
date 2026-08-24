@@ -8,6 +8,9 @@ export type Project = {
   location: string;
   area: string;
   type: string;
+  structuralTypology: string;
+  timeline: string;
+  complexity: string;
   cover: string;
   gallery: string[];
   summary: string;
@@ -28,6 +31,9 @@ export const projects: Project[] = [
     location: "Chapecó, SC",
     area: "51.772,49 m²",
     type: "40 Pavimentos · Concreto Armado",
+    structuralTypology: "Núcleo Rígido Central & Concreto C50 High-Performance",
+    timeline: "36 Meses de Execução",
+    complexity: "Alta Rigidez Lateral & Fôrmas Deslizantes Otimizadas",
     cover: "/Obra Legacy/WhatsApp Image 2026-07-29 at 10.57.13.jpeg",
     gallery: [
       "/Obra Legacy/WhatsApp Image 2026-07-29 at 10.57.13.jpeg",
@@ -63,6 +69,9 @@ export const projects: Project[] = [
     location: "Itapema, SC",
     area: "37.850,68 m²",
     type: "63 Pavimentos · Concreto Armado High-Rise",
+    structuralTypology: "Superestrutura High-Rise · Concreto C60 com Túnel de Vento",
+    timeline: "48 Meses em Andamento",
+    complexity: "Vento Dinâmico litorâneo & Núcleo Enrijecido Contínuo",
     cover: "/Obra Latelie/WhatsApp Image 2026-07-28 at 16.02.38 (2).jpeg",
     gallery: [
       "/Obra Latelie/WhatsApp Image 2026-07-28 at 16.02.38 (2).jpeg",
@@ -92,6 +101,9 @@ export const projects: Project[] = [
     location: "Campinas, SP",
     area: "29.906,16 m²",
     type: "29 Pavimentos · Concreto Armado",
+    structuralTypology: "Lajes Protendidas de Grande Vão & Pilares Esbeltos",
+    timeline: "28 Meses de Execução",
+    complexity: "Otimização de Vagas de Garagem & Vãos Livres Amplos",
     cover: "/Obra Tay/WhatsApp Image 2026-07-29 at 12.01.01.jpeg",
     gallery: [
       "/Obra Tay/WhatsApp Image 2026-07-29 at 12.01.01.jpeg",
@@ -120,6 +132,9 @@ export const projects: Project[] = [
     location: "Campinas, SP",
     area: "12.000,00 m²",
     type: "28 Pavimentos · Concreto Armado",
+    structuralTypology: "Torre Esbelta em Concreto Armado com Armadura Otimizada",
+    timeline: "24 Meses de Execução",
+    complexity: "Controle Rigoroso de Deformações & Velocidade Construtiva",
     cover: "/Obra Authentic/WhatsApp Image 2026-07-29 at 11.53.52.jpeg",
     gallery: [
       "/Obra Authentic/WhatsApp Image 2026-07-29 at 11.53.52.jpeg",
@@ -147,7 +162,10 @@ export const projects: Project[] = [
     year: "2024",
     location: "Chapecó, SC",
     area: "9.377,98 m²",
-    type: "Concreto Armado de Alta Resistência",
+    type: "Uso Misto · Concreto Armado de Alta Resistência",
+    structuralTypology: "Vigas de Transição Protendidas de Alta Capacidade",
+    timeline: "20 Meses de Execução",
+    complexity: "Compatibilização Estrutural entre Embasamento e Torre",
     cover: "/Obra 21/1.png",
     gallery: [
       "/Obra 21/1.png",
@@ -177,6 +195,9 @@ export const projects: Project[] = [
     location: "Balneário Camboriú, SC",
     area: "2.400,00 m²",
     type: "57 Pavimentos · Concreto Armado",
+    structuralTypology: "Esbeltez Elevada · Análise Global de Estabilidade 2ª Ordem",
+    timeline: "42 Meses em Andamento",
+    complexity: "Rigidez Torsional & Estabilidade Global em Lote Urbano Nobre",
     cover: "/Obra Iconi/1.png",
     gallery: [
       "/Obra Iconi/1.png",
@@ -199,3 +220,4 @@ export const projects: Project[] = [
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+

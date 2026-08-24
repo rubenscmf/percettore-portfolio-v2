@@ -50,7 +50,7 @@ export const AnimatedStatCounter = ({
       ref={containerRef}
       className="bg-foreground p-8 md:p-10 border border-background/10 hover:border-primary/50 transition-colors duration-500 group"
     >
-      <div className="font-mono text-primary text-[11px] uppercase tracking-widest mb-3 flex items-center justify-between">
+      <div className="font-sans text-primary text-xs font-bold uppercase tracking-wider mb-3 flex items-center justify-between">
         <span>[{index}]</span>
         <span className="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary group-hover:scale-125 transition-all" />
       </div>
@@ -62,7 +62,7 @@ export const AnimatedStatCounter = ({
         </animated.span>
         <span>{suffix}</span>
       </div>
-      <div className="mt-4 text-xs uppercase tracking-[0.2em] text-concrete-300 group-hover:text-white transition-colors">
+      <div className="mt-4 font-sans text-xs font-medium uppercase tracking-wider text-concrete-300 group-hover:text-white transition-colors">
         {label}
       </div>
     </div>

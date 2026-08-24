@@ -12,9 +12,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Clash Display', 'sans-serif'],
+        sans: ['Clash Display', 'Inter', 'sans-serif'],
         display: ['Arboria', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        condensed: ['Arboria', 'sans-serif'],
+        serif: ['Clash Display', 'Inter', 'sans-serif'],
+        mono: ['Clash Display', 'Inter', 'sans-serif'],
         small: ['Clash Display', 'sans-serif'],
       },
       colors: {

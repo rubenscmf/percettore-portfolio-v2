@@ -67,12 +67,19 @@
   }
 
   .font-display { font-family: 'Arboria', sans-serif; }
+  .font-condensed { font-family: 'Arboria', sans-serif; }
+  .font-serif { font-family: 'Clash Display', 'Inter', sans-serif; }
   .font-small { font-family: 'Clash Display', sans-serif; }
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
+
+  /* Clean background surface without dot matrix noise */
+  .bg-concrete-grain {
+    background-color: transparent;
+  }
 
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(30px); }
