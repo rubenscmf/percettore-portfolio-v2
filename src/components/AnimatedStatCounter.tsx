@@ -48,13 +48,13 @@ export const AnimatedStatCounter = ({
   return (
     <div
       ref={containerRef}
-      className="bg-foreground p-8 md:p-10 border border-background/10 hover:border-primary/50 transition-colors duration-500 group"
+      className="bg-foreground p-5 sm:p-8 md:p-10 border border-background/10 hover:border-primary/50 transition-colors duration-500 group overflow-hidden"
     >
-      <div className="font-sans text-primary text-xs font-bold uppercase tracking-wider mb-3 flex items-center justify-between">
+      <div className="font-sans text-primary text-xs font-bold uppercase tracking-wider mb-2 sm:mb-3 flex items-center justify-between">
         <span>[{index}]</span>
         <span className="w-2 h-2 rounded-full bg-primary/40 group-hover:bg-primary group-hover:scale-125 transition-all" />
       </div>
-      <div className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter flex items-baseline">
+      <div className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter flex items-baseline flex-wrap">
         <animated.span>
           {number.to((n) =>
             targetNum % 1 !== 0 ? n.toFixed(1) : Math.floor(n).toString()
@@ -62,7 +62,7 @@ export const AnimatedStatCounter = ({
         </animated.span>
         <span>{suffix}</span>
       </div>
-      <div className="mt-4 font-sans text-xs font-medium uppercase tracking-wider text-concrete-300 group-hover:text-white transition-colors">
+      <div className="mt-3 sm:mt-4 font-sans text-xs font-medium uppercase tracking-wider text-concrete-300 group-hover:text-white transition-colors leading-snug break-words">
         {label}
       </div>
     </div>

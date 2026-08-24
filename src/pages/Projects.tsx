@@ -14,27 +14,27 @@ const Projects = () => {
 
   return (
     <Layout>
-      <section className="container pt-40 pb-16">
-        <SectionLabel index="01" className="mb-6">Portfólio Editorial</SectionLabel>
-        <h1 className="font-display font-extrabold text-5xl md:text-8xl tracking-tighter leading-[0.88] uppercase text-balance">
+      <section className="container pt-28 sm:pt-40 pb-10 sm:pb-16">
+        <SectionLabel index="01" className="mb-4 sm:mb-6">Portfólio Editorial</SectionLabel>
+        <h1 className="font-display font-extrabold text-3xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] uppercase text-balance">
           OBRAS QUE <span className="text-primary">SUSTENTAM</span><br /> O HORIZONTE.
         </h1>
-        <p className="mt-8 max-w-2xl text-concrete-700 text-lg md:text-xl leading-relaxed text-pretty">
+        <p className="mt-6 sm:mt-8 max-w-2xl text-concrete-700 text-base sm:text-lg md:text-xl leading-relaxed text-pretty">
           Uma seleção rigorosa de projetos onde aplicamos engenharia de ponta em concreto armado — do cálculo de fundações profundas à superestrutura de edifícios de alta complexidade.
         </p>
       </section>
 
-      {/* CATEGORY FILTER BAR */}
-      <div className="sticky top-20 z-30 bg-background/90 backdrop-blur-md border-y border-foreground/10 py-5 my-8">
+      {/* CATEGORY FILTER BAR WITH MOBILE SCROLL */}
+      <div className="sticky top-16 sm:top-20 z-30 bg-background/95 backdrop-blur-md border-y border-foreground/10 py-4 sm:py-5 my-6 sm:my-8">
         <div className="container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((c) => {
               const count = c === "Todos" ? projects.length : projects.filter((p) => p.category === c).length;
               return (
                 <button
                   key={c}
                   onClick={() => setActive(c)}
-                  className={`font-mono text-xs uppercase tracking-[0.2em] px-4 py-2.5 transition-all duration-300 border ${
+                  className={`font-sans text-xs uppercase tracking-wider px-3.5 sm:px-4 py-2 sm:py-2.5 whitespace-nowrap transition-all duration-300 border ${
                     active === c
                       ? "bg-foreground text-background border-foreground font-bold shadow-md"
                       : "bg-transparent text-concrete-700 border-foreground/15 hover:border-foreground/50 hover:text-foreground"
@@ -46,7 +46,7 @@ const Projects = () => {
             })}
           </div>
 
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-concrete-500 self-end sm:self-center">
+          <span className="font-sans text-xs uppercase tracking-wider text-concrete-500 font-medium self-start sm:self-center">
             Exibindo {filtered.length} de {projects.length} Obras
           </span>
         </div>

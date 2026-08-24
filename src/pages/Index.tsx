@@ -247,7 +247,7 @@ const Index = () => {
       </section>
 
       {/* INTRO MANIFESTO WITH CLEAN ELEGANT BACKGROUND */}
-      <section className="relative py-32 bg-background border-b border-foreground/10 overflow-hidden">
+      <section className="relative py-16 sm:py-24 md:py-32 bg-background border-b border-foreground/10 overflow-hidden">
         <div ref={manifestoRef} className="container relative z-10 grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-4">
             <SectionLabel index="02">Manifesto</SectionLabel>
@@ -255,12 +255,12 @@ const Index = () => {
           <div className="col-span-12 md:col-span-8">
             <h2
               ref={manifestoTitleRef}
-              className="font-display font-bold text-4xl md:text-6xl uppercase leading-[0.95] tracking-tight text-balance"
+              className="font-display font-bold text-3xl sm:text-5xl md:text-6xl uppercase leading-[0.95] tracking-tight text-balance"
             >
               Concreto não perdoa <span className="text-primary">erro de cálculo</span>. Por isso
               tratamos cada estrutura como obra única.
             </h2>
-            <p className="mt-8 max-w-2xl text-concrete-700 text-lg md:text-xl leading-relaxed text-pretty font-normal">
+            <p className="mt-6 sm:mt-8 max-w-2xl text-concrete-700 text-base sm:text-lg md:text-xl leading-relaxed text-pretty font-normal">
               A Percettore é especialista em projetar e executar estruturas de concreto armado
               de alta complexidade. Trabalhamos com construtoras, incorporadoras e indústrias que
               exigem rigor técnico, previsibilidade de prazo e durabilidade comprovada.
@@ -270,11 +270,11 @@ const Index = () => {
       </section>
 
       {/* FEATURED PROJECTS (EDITORIAL GRID WITH PROJECTCARD) */}
-      <section className="container py-32">
-        <div className="flex items-end justify-between border-b border-foreground/15 pb-6 mb-16">
+      <section className="container py-16 sm:py-24 md:py-32">
+        <div className="flex items-end justify-between border-b border-foreground/15 pb-6 mb-12 sm:mb-16">
           <div>
             <SectionLabel index="03" className="mb-3">Selecionados</SectionLabel>
-            <h2 className="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight">
+            <h2 className="font-display font-bold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight">
               Obras de Referência
             </h2>
           </div>
@@ -291,20 +291,20 @@ const Index = () => {
       </section>
 
       {/* TECHNICAL STATS (GSAP SCROLLTRIGGER + REACT SPRING ANIMATED COUNTERS) */}
-      <section className="bg-foreground text-background py-32">
-        <div className="container grid grid-cols-12 gap-12">
+      <section className="bg-foreground text-background py-16 sm:py-24 md:py-32 overflow-hidden">
+        <div className="container grid grid-cols-12 gap-8 md:gap-12">
           <div className="col-span-12 md:col-span-5">
-            <SectionLabel index="04" className="text-background/60 mb-6">Excelência Normativa</SectionLabel>
-            <h2 className="font-display text-4xl md:text-6xl tracking-tighter leading-[1]">
+            <SectionLabel index="04" className="text-background/60 mb-4 sm:mb-6">Excelência Normativa</SectionLabel>
+            <h2 className="font-display text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1] text-balance">
               Engenharia que <span className="text-primary">resiste</span> ao tempo.
             </h2>
-            <p className="mt-8 text-concrete-300 max-w-md text-pretty">
+            <p className="mt-6 sm:mt-8 text-concrete-300 max-w-md text-pretty text-sm sm:text-base">
               Atuamos rigorosamente dentro das normas NBR 6118 e NBR 14931. Cada metro cúbico de
               concreto despejado pela Percettore carrega nossa garantia de durabilidade e segurança.
             </p>
           </div>
 
-          <div className="col-span-12 md:col-span-7 grid grid-cols-2 gap-px bg-background/15 border border-background/15">
+          <div className="col-span-12 md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-px bg-background/15 border border-background/15">
             {[
               { k: "540k", l: "Metros quadrados projetados", idx: "01" },
               { k: "128", l: "Projetos entregues", idx: "02" },
@@ -318,16 +318,16 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="container py-32">
+      <section className="container py-16 sm:py-24 md:py-32">
         <div className="grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 md:col-span-8">
-            <h2 className="font-display text-4xl md:text-7xl tracking-tighter leading-[0.95] text-balance">
+            <h2 className="font-display text-3xl sm:text-5xl md:text-7xl tracking-tight leading-[0.95] text-balance">
               Tem um projeto que exige <span className="text-primary">rigor estrutural</span>?
             </h2>
           </div>
           <Link
             to="/contato"
-            className="col-span-12 md:col-span-4 group inline-flex items-center justify-between gap-4 bg-foreground text-background px-6 py-6 font-mono text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all duration-300 shadow-xl"
+            className="col-span-12 md:col-span-4 group inline-flex items-center justify-between gap-4 bg-foreground text-background px-6 py-5 sm:py-6 font-mono text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all duration-300 shadow-xl"
           >
             Iniciar Conversa
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform" />

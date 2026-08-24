@@ -40,40 +40,40 @@ const ProjectDetail = () => {
   return (
     <Layout>
       {/* HEADER & NAV */}
-      <section className="container pt-36 pb-8">
-        <Link to="/projetos" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-concrete-500 hover:text-primary transition-colors">
+      <section className="container pt-28 sm:pt-36 pb-6 sm:pb-8">
+        <Link to="/projetos" className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-concrete-500 hover:text-primary transition-colors font-medium">
           <ArrowLeft className="h-4 w-4" /> Portfólio Percettore
         </Link>
       </section>
 
       {/* HERO SECTION OF PROJECT */}
-      <section className="container pb-16">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <section className="container pb-10 sm:pb-16">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-4 sm:mb-6">
           <SectionLabel index={project.index}>{project.category}</SectionLabel>
-          <span className={`font-mono text-xs uppercase tracking-widest px-3 py-1 border ${
+          <span className={`font-sans text-xs uppercase tracking-wider px-3 py-1 border ${
             project.status === "Executado" ? "bg-primary/10 border-primary text-primary font-bold" : "bg-amber-500/10 border-amber-500 text-amber-600 font-bold"
           }`}>
             {project.status}
           </span>
         </div>
 
-        <h1 className="font-display font-extrabold text-5xl md:text-8xl tracking-tighter leading-[0.88] uppercase text-balance">
+        <h1 className="font-display font-extrabold text-3xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] uppercase text-balance">
           {project.title}
         </h1>
-        <p className="mt-8 max-w-3xl text-concrete-700 text-lg md:text-xl leading-relaxed text-pretty font-normal">
+        <p className="mt-6 sm:mt-8 max-w-3xl text-concrete-700 text-base sm:text-lg md:text-xl leading-relaxed text-pretty font-normal">
           {project.summary}
         </p>
       </section>
 
       {/* MAIN COVER IMAGE */}
-      <section className="container pb-24">
+      <section className="container pb-16 sm:pb-24">
         <div 
           onClick={() => setSelectedImage(project.cover)}
           className="group relative aspect-[16/9] overflow-hidden bg-concrete-900/10 border border-foreground/10 cursor-pointer rounded-sm"
         >
           <img src={project.cover} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102" />
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span className="bg-concrete-900/90 text-white font-mono text-xs uppercase tracking-widest px-4 py-2 flex items-center gap-2">
+            <span className="bg-concrete-900/90 text-white font-sans text-xs uppercase tracking-wider px-4 py-2 flex items-center gap-2 font-medium">
               <Maximize2 className="w-4 h-4 text-primary" /> Expandir Imagem
             </span>
           </div>
@@ -81,22 +81,22 @@ const ProjectDetail = () => {
       </section>
 
       {/* BLOCO 1: DADOS TÉCNICOS */}
-      <section className="container pb-32">
-        <div className="border-t border-foreground/15 pt-8 mb-12">
+      <section className="container pb-16 sm:pb-32">
+        <div className="border-t border-foreground/15 pt-6 sm:pt-8 mb-8 sm:mb-12">
           <SectionLabel index="01" className="mb-2">Especificações Executivas</SectionLabel>
-          <h2 className="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight">
             Dados Técnicos de Engenharia
           </h2>
         </div>
 
         <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/15 border border-foreground/15">
           {specs.map((s) => (
-            <div key={s.k} className="bg-background p-6 flex flex-col justify-between min-h-[120px]">
-              <dt className="font-mono text-xs uppercase tracking-[0.15em] text-concrete-500 mb-3 flex items-center gap-1.5 font-medium">
-                <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block" />
+            <div key={s.k} className="bg-background p-4 sm:p-6 flex flex-col justify-between min-h-[100px] sm:min-h-[120px]">
+              <dt className="font-sans text-xs uppercase tracking-wider text-concrete-500 mb-2 sm:mb-3 flex items-center gap-1.5 font-medium">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block shrink-0" />
                 {s.k}
               </dt>
-              <dd className="font-display font-bold text-xl md:text-2xl text-foreground uppercase tracking-tight leading-tight">
+              <dd className="font-display font-bold text-lg sm:text-xl md:text-2xl text-foreground uppercase tracking-tight leading-tight">
                 {s.v}
               </dd>
             </div>
@@ -105,17 +105,17 @@ const ProjectDetail = () => {
       </section>
 
       {/* BLOCO 2: DESAFIO ESTRUTURAL */}
-      <section className="relative py-24 bg-background border-y border-foreground/10 mb-32">
-        <div className="container grid grid-cols-12 gap-8 items-start">
+      <section className="relative py-12 sm:py-24 bg-background border-y border-foreground/10 mb-16 sm:mb-32">
+        <div className="container grid grid-cols-12 gap-6 sm:gap-8 items-start">
           <div className="col-span-12 lg:col-span-4">
-            <SectionLabel index="02" className="mb-3">Contexto & Restrições</SectionLabel>
-            <h2 className="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight">
+            <SectionLabel index="02" className="mb-2 sm:mb-3">Contexto & Restrições</SectionLabel>
+            <h2 className="font-display font-bold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight">
               Desafio Estrutural
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-8">
-            <div className="pl-6 border-l-2 border-primary">
-              <p className="text-xl md:text-2xl text-foreground font-medium leading-relaxed text-pretty">
+            <div className="pl-4 sm:pl-6 border-l-2 border-primary">
+              <p className="text-base sm:text-xl md:text-2xl text-foreground font-medium leading-relaxed text-pretty">
                 "{project.challenge}"
               </p>
             </div>
