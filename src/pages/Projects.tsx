@@ -14,54 +14,66 @@ const Projects = () => {
 
   return (
     <Layout>
-      <section className="container pt-28 sm:pt-40 pb-10 sm:pb-16">
-        <SectionLabel index="01" className="mb-4 sm:mb-6">Portfólio Editorial</SectionLabel>
-        <h1 className="font-display font-extrabold text-3xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] uppercase text-balance">
-          OBRAS QUE <span className="text-primary">SUSTENTAM</span><br /> O HORIZONTE.
-        </h1>
-        <p className="mt-6 sm:mt-8 max-w-2xl text-concrete-700 text-base sm:text-lg md:text-xl leading-relaxed text-pretty">
-          Uma seleção rigorosa de projetos onde aplicamos engenharia de ponta em concreto armado — do cálculo de fundações profundas à superestrutura de edifícios de alta complexidade.
-        </p>
-      </section>
-
-      {/* CATEGORY FILTER BAR WITH MOBILE SCROLL */}
-      <div className="sticky top-16 sm:top-20 z-30 bg-background/95 backdrop-blur-md border-y border-foreground/10 py-4 sm:py-5 my-6 sm:my-8">
-        <div className="container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
-            {categories.map((c) => {
-              const count = c === "Todos" ? projects.length : projects.filter((p) => p.category === c).length;
-              return (
-                <button
-                  key={c}
-                  onClick={() => setActive(c)}
-                  className={`font-sans text-xs uppercase tracking-wider px-3.5 sm:px-4 py-2 sm:py-2.5 whitespace-nowrap transition-all duration-300 border ${
-                    active === c
-                      ? "bg-foreground text-background border-foreground font-bold shadow-md"
-                      : "bg-transparent text-concrete-700 border-foreground/15 hover:border-foreground/50 hover:text-foreground"
-                  }`}
-                >
-                  {c} <span className="text-[10px] opacity-70 ml-1">({count})</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <span className="font-sans text-xs uppercase tracking-wider text-concrete-500 font-medium self-start sm:self-center">
-            Exibindo {filtered.length} de {projects.length} Obras
+      <div className="relative pt-36 md:pt-48 pb-32 overflow-hidden">
+        {/* GIANT WATERMARK TYPOGRAPHY BACKGROUND */}
+        <div className="absolute top-24 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
+          <span className="block font-display font-black text-[clamp(4.5rem,14vw,14rem)] text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap leading-none">
+            portfolio de obras
           </span>
         </div>
-      </div>
 
-      {/* EDITORIAL GRID */}
-      <section className="container pb-32 pt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
-          {filtered.map((p, i) => (
-            <div key={p.slug} className={i % 2 === 1 ? "md:mt-16" : ""}>
-              <ProjectCard project={p} totalProjects={projects.length} />
+        <div className="max-w-[1440px] mx-auto px-6 relative z-10">
+          {/* HEADER */}
+          <div className="space-y-6 max-w-3xl mb-14">
+            <SectionLabel index="01">
+              Portfólio de Engenharia Estrutural
+            </SectionLabel>
+            <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl tracking-tighter uppercase leading-[0.92] text-balance">
+              Obras que <span className="text-primary">sustentam</span> o horizonte.
+            </h1>
+            <p className="text-concrete-700 text-base sm:text-lg md:text-xl leading-relaxed">
+              Seleção de empreendimentos verticais, comerciais e residenciais calculados com rigor
+              milimétrico e total conformidade com as normas ABNT NBR 6118 e 14931.
+            </p>
+          </div>
+
+          {/* CATEGORY FILTER BAR (EDITORIAL PILL STYLE) */}
+          <div className="sticky top-20 z-20 bg-background/90 backdrop-blur-md border-y border-foreground/[0.08] py-4 mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+                {categories.map((c) => {
+                  const count = c === "Todos" ? projects.length : projects.filter((p) => p.category === c).length;
+                  const isActive = active === c;
+                  return (
+                    <button
+                      key={c}
+                      onClick={() => setActive(c)}
+                      className={`font-sans text-xs uppercase tracking-wider px-4 py-2 rounded-full whitespace-nowrap transition-all duration-200 border ${
+                        isActive
+                          ? "bg-foreground text-background border-foreground font-bold shadow-sm"
+                          : "bg-transparent text-concrete-600 border-foreground/15 hover:border-foreground/40 hover:text-foreground"
+                      }`}
+                    >
+                      {c} <span className="text-[10px] opacity-70 ml-1">({count})</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <span className="font-sans text-xs uppercase tracking-wider text-concrete-500 font-medium shrink-0">
+                {filtered.length} de {projects.length} Obras Reais
+              </span>
             </div>
-          ))}
+          </div>
+
+          {/* GRID OF PROJECTS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filtered.map((p) => (
+              <ProjectCard key={p.slug} project={p} totalProjects={projects.length} />
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
     </Layout>
   );
 };

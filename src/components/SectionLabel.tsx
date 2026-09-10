@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const SectionLabel = ({ index, children, className = "" }: Props) => (
-  <div className={`flex items-center gap-3 font-sans text-xs font-semibold uppercase tracking-wider text-concrete-500 ${className}`}>
+  <div className={`inline-flex items-center gap-3 font-sans text-[11px] md:text-xs font-semibold uppercase tracking-[0.28em] text-concrete-500 ${className}`}>
     {index && <span className="text-primary font-bold">[{index}]</span>}
     <span>{children}</span>
   </div>

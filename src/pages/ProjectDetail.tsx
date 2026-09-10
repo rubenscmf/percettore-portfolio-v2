@@ -13,12 +13,15 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <Layout>
-        <section className="container pt-40 pb-32">
+        <div className="max-w-[1440px] mx-auto px-6 pt-40 pb-32">
           <h1 className="font-display text-5xl uppercase font-bold">Projeto não encontrado</h1>
-          <Link to="/projetos" className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
+          <Link
+            to="/projetos"
+            className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary"
+          >
             <ArrowLeft className="h-4 w-4" /> Voltar ao portfólio
           </Link>
-        </section>
+        </div>
       </Layout>
     );
   }
@@ -28,212 +31,230 @@ const ProjectDetail = () => {
 
   const specs = [
     { k: "Área Construída", v: project.area },
-    { k: "Prazo Executivo", v: project.timeline },
-    { k: "Tipologia Estrutural", v: project.structuralTypology },
-    { k: "Complexidade Técnica", v: project.complexity },
+    { k: "Tipologia Estrutural", v: project.type },
     { k: "Localização", v: project.location },
-    { k: "Ano de Projeto", v: project.year },
+    { k: "Ano de Execução", v: project.year },
     { k: "Status Atual", v: project.status },
-    { k: "Categoria", v: project.category },
+    { k: "Segmento", v: project.category },
+    { k: "Normas Técnicas", v: "NBR 6118 / 14931" },
+    { k: "Controle Tecnológico", v: "FCK 50-60 MPa" },
   ];
 
   return (
     <Layout>
-      {/* HEADER & NAV */}
-      <section className="container pt-28 sm:pt-36 pb-6 sm:pb-8">
-        <Link to="/projetos" className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-concrete-500 hover:text-primary transition-colors font-medium">
-          <ArrowLeft className="h-4 w-4" /> Portfólio Percettore
-        </Link>
-      </section>
-
-      {/* HERO SECTION OF PROJECT */}
-      <section className="container pb-10 sm:pb-16">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-4 sm:mb-6">
-          <SectionLabel index={project.index}>{project.category}</SectionLabel>
-          <span className={`font-sans text-xs uppercase tracking-wider px-3 py-1 border ${
-            project.status === "Executado" ? "bg-primary/10 border-primary text-primary font-bold" : "bg-amber-500/10 border-amber-500 text-amber-600 font-bold"
-          }`}>
-            {project.status}
+      <div className="relative pt-36 md:pt-48 pb-32 space-y-20 overflow-hidden">
+        {/* WATERMARK BACKGROUND TYPOGRAPHY */}
+        <div className="absolute top-24 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
+          <span className="block font-display font-black text-[clamp(4.5rem,14vw,14rem)] text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap leading-none">
+            {project.title}
           </span>
         </div>
 
-        <h1 className="font-display font-extrabold text-3xl sm:text-6xl md:text-8xl tracking-tighter leading-[0.9] uppercase text-balance">
-          {project.title}
-        </h1>
-        <p className="mt-6 sm:mt-8 max-w-3xl text-concrete-700 text-base sm:text-lg md:text-xl leading-relaxed text-pretty font-normal">
-          {project.summary}
-        </p>
-      </section>
-
-      {/* MAIN COVER IMAGE */}
-      <section className="container pb-16 sm:pb-24">
-        <div 
-          onClick={() => setSelectedImage(project.cover)}
-          className="group relative aspect-[16/9] overflow-hidden bg-concrete-900/10 border border-foreground/10 cursor-pointer rounded-sm"
-        >
-          <img src={project.cover} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102" />
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span className="bg-concrete-900/90 text-white font-sans text-xs uppercase tracking-wider px-4 py-2 flex items-center gap-2 font-medium">
-              <Maximize2 className="w-4 h-4 text-primary" /> Expandir Imagem
-            </span>
+        <div className="max-w-[1440px] mx-auto px-6 relative z-10 space-y-16">
+          {/* TOP NAV & BREADCRUMB */}
+          <div>
+            <Link
+              to="/projetos"
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-concrete-500 hover:text-primary transition-colors font-semibold"
+            >
+              <ArrowLeft className="h-4 w-4" /> Voltar ao Portfólio de Obras
+            </Link>
           </div>
-        </div>
-      </section>
 
-      {/* BLOCO 1: DADOS TÉCNICOS */}
-      <section className="container pb-16 sm:pb-32">
-        <div className="border-t border-foreground/15 pt-6 sm:pt-8 mb-8 sm:mb-12">
-          <SectionLabel index="01" className="mb-2">Especificações Executivas</SectionLabel>
-          <h2 className="font-display font-bold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight">
-            Dados Técnicos de Engenharia
-          </h2>
-        </div>
-
-        <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/15 border border-foreground/15">
-          {specs.map((s) => (
-            <div key={s.k} className="bg-background p-4 sm:p-6 flex flex-col justify-between min-h-[100px] sm:min-h-[120px]">
-              <dt className="font-sans text-xs uppercase tracking-wider text-concrete-500 mb-2 sm:mb-3 flex items-center gap-1.5 font-medium">
-                <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block shrink-0" />
-                {s.k}
-              </dt>
-              <dd className="font-display font-bold text-lg sm:text-xl md:text-2xl text-foreground uppercase tracking-tight leading-tight">
-                {s.v}
-              </dd>
+          {/* PROJECT HEADER */}
+          <div className="space-y-6 max-w-4xl">
+            <div className="flex flex-wrap items-center gap-3">
+              <SectionLabel index={project.index}>{project.category}</SectionLabel>
+              <span className="bg-primary/10 border border-primary/20 text-primary font-sans text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                {project.status}
+              </span>
             </div>
-          ))}
-        </dl>
-      </section>
 
-      {/* BLOCO 2: DESAFIO ESTRUTURAL */}
-      <section className="relative py-12 sm:py-24 bg-background border-y border-foreground/10 mb-16 sm:mb-32">
-        <div className="container grid grid-cols-12 gap-6 sm:gap-8 items-start">
-          <div className="col-span-12 lg:col-span-4">
-            <SectionLabel index="02" className="mb-2 sm:mb-3">Contexto & Restrições</SectionLabel>
-            <h2 className="font-display font-bold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight">
-              Desafio Estrutural
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-8">
-            <div className="pl-4 sm:pl-6 border-l-2 border-primary">
-              <p className="text-base sm:text-xl md:text-2xl text-foreground font-medium leading-relaxed text-pretty">
-                "{project.challenge}"
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+            <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter uppercase leading-[0.92] text-balance">
+              {project.title}
+            </h1>
 
-      {/* BLOCO 3: SOLUÇÃO DE ENGENHARIA */}
-      <section className="container pb-32">
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 lg:col-span-4">
-            <SectionLabel index="03" className="mb-3">Metodologia & Projeto</SectionLabel>
-            <h2 className="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight">
-              Solução de Engenharia
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-8 space-y-10">
-            <p className="text-lg text-concrete-700 leading-relaxed text-pretty">
-              {project.solution}
+            <p className="text-concrete-700 text-lg sm:text-xl md:text-2xl leading-relaxed text-pretty font-normal">
+              {project.summary}
             </p>
+          </div>
 
-            <div className="pt-6 border-t border-foreground/15">
-              <h3 className="font-mono text-xs uppercase tracking-[0.25em] text-concrete-500 mb-6 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-primary" />
-                Escopo de Atuação Técnica
-              </h3>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {project.scope.map((item) => (
-                  <li key={item} className="flex items-start gap-3 bg-concrete-100/50 p-4 border border-foreground/10">
-                    <span className="text-primary font-mono font-bold">›</span>
-                    <span className="font-mono text-xs uppercase tracking-widest text-foreground font-semibold">{item}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* MAIN COVER IMAGE */}
+          <div
+            onClick={() => setSelectedImage(project.cover)}
+            className="group relative aspect-[16/9] overflow-hidden bg-concrete-100 border border-foreground/[0.08] cursor-pointer rounded-sm shadow-xl"
+          >
+            <img
+              src={project.cover}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span className="bg-background/90 backdrop-blur-sm text-foreground font-sans text-xs uppercase tracking-wider px-5 py-3 rounded-full flex items-center gap-2 font-bold shadow-lg">
+                <Maximize2 className="w-4 h-4 text-primary" /> Ampliar Fotografia
+              </span>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* BLOCO 4: GALERIA EDITORIAL */}
-      {project.gallery.length > 0 && (
-        <section className="container pb-32">
-          <div className="border-t border-foreground/15 pt-8 mb-12">
-            <SectionLabel index="04" className="mb-2">Documentação Visual</SectionLabel>
-            <h2 className="font-display font-bold text-3xl md:text-5xl uppercase tracking-tight">
-              Galeria da Obra
-            </h2>
+          {/* DADOS TÉCNICOS DE ENGENHARIA */}
+          <div className="space-y-8">
+            <div className="border-b border-foreground/[0.08] pb-4">
+              <SectionLabel index="01">Especificações Executivas</SectionLabel>
+              <h2 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-foreground mt-2">
+                Ficha Técnica da Estrutura
+              </h2>
+            </div>
+
+            <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {specs.map((s) => (
+                <div
+                  key={s.k}
+                  className="p-6 bg-card border border-foreground/[0.08] rounded-sm flex flex-col justify-between"
+                >
+                  <dt className="font-sans text-[11px] uppercase tracking-wider text-concrete-500 font-bold mb-2 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block" />
+                    {s.k}
+                  </dt>
+                  <dd className="font-display font-bold text-lg sm:text-xl text-foreground uppercase tracking-tight">
+                    {s.v}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {project.gallery.map((img, i) => (
-              <div 
-                key={i} 
-                onClick={() => setSelectedImage(img)}
-                className={`group relative overflow-hidden bg-concrete-900/10 border border-foreground/10 cursor-pointer rounded-sm ${
-                  i === 0 ? "md:col-span-2 aspect-[16/9]" : "aspect-[4/3]"
-                }`}
+          {/* DESAFIO & SOLUÇÃO */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8 border-t border-foreground/[0.08]">
+            <div className="lg:col-span-6 space-y-6">
+              <SectionLabel index="02">Contexto & Restrições</SectionLabel>
+              <h2 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-foreground">
+                Desafio Estrutural
+              </h2>
+              <blockquote className="p-6 bg-card border-l-4 border-primary border-y border-r border-foreground/[0.08] text-base sm:text-lg text-concrete-700 leading-relaxed italic">
+                "{project.challenge}"
+              </blockquote>
+            </div>
+
+            <div className="lg:col-span-6 space-y-6">
+              <SectionLabel index="03">Metodologia & Projeto</SectionLabel>
+              <h2 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-foreground">
+                Solução de Engenharia
+              </h2>
+              <p className="text-base sm:text-lg text-concrete-700 leading-relaxed">
+                {project.solution}
+              </p>
+
+              <div className="pt-4 space-y-3">
+                <div className="font-sans text-xs uppercase tracking-wider text-concrete-500 font-bold flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-primary" />
+                  Escopo de Atuação Técnica:
+                </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {project.scope.map((item) => (
+                    <li
+                      key={item}
+                      className="p-3 bg-card border border-foreground/[0.06] text-xs font-sans font-semibold uppercase tracking-wider text-foreground flex items-center gap-2"
+                    >
+                      <span className="text-primary font-bold">›</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* GALERIA DE FOTOS */}
+          {project.gallery.length > 0 && (
+            <div className="space-y-8 pt-8 border-t border-foreground/[0.08]">
+              <div className="border-b border-foreground/[0.08] pb-4">
+                <SectionLabel index="04">Documentação Visual</SectionLabel>
+                <h2 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-foreground mt-2">
+                  Galeria da Obra
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {project.gallery.map((img, i) => (
+                  <div
+                    key={i}
+                    onClick={() => setSelectedImage(img)}
+                    className="group relative aspect-[4/3] overflow-hidden bg-concrete-100 border border-foreground/[0.08] cursor-pointer rounded-sm"
+                  >
+                    <img
+                      src={img}
+                      alt={`${project.title} — Foto ${i + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="bg-background/90 text-foreground font-sans text-xs uppercase tracking-wider px-4 py-2 rounded-full font-bold shadow-md">
+                        Ampliar
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* MODAL LIGHTBOX */}
+          {selectedImage && (
+            <div
+              onClick={() => setSelectedImage(null)}
+              className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-6 right-6 text-white hover:text-primary transition-colors p-2"
               >
-                <img src={img} alt={`${project.title} — Imagem ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="bg-concrete-900/90 text-white font-mono text-xs uppercase tracking-widest px-4 py-2 flex items-center gap-2">
-                    <Maximize2 className="w-4 h-4 text-primary" /> Visualizar em Alta Resolução
-                  </span>
+                <X className="w-8 h-8" />
+              </button>
+              <img
+                src={selectedImage}
+                alt="Visualização expandida"
+                className="max-w-full max-h-[90vh] object-contain shadow-2xl border border-white/10"
+              />
+            </div>
+          )}
+
+          {/* DEPOIMENTO SE DISPONÍVEL */}
+          {project.testimonial && (
+            <div className="p-10 md:p-14 bg-foreground text-background rounded-sm">
+              <div className="font-sans text-xs uppercase tracking-[0.25em] text-primary font-bold mb-4">
+                [RECONHECIMENTO DO CLIENTE]
+              </div>
+              <blockquote className="font-display font-medium text-2xl sm:text-3xl md:text-4xl leading-snug">
+                "{project.testimonial.quote}"
+              </blockquote>
+              <div className="mt-6 font-sans text-xs uppercase tracking-wider text-concrete-300">
+                <span className="font-bold text-white">{project.testimonial.author}</span> — {project.testimonial.role}
+              </div>
+            </div>
+          )}
+
+          {/* PRÓXIMA OBRA */}
+          <div className="pt-12 border-t border-foreground/[0.08]">
+            <Link
+              to={`/projetos/${next.slug}`}
+              className="group p-8 sm:p-12 bg-card border border-foreground/[0.08] hover:border-primary/40 rounded-sm flex items-center justify-between gap-6 transition-all"
+            >
+              <div>
+                <div className="font-sans text-xs uppercase tracking-[0.2em] text-concrete-500 font-bold mb-2">
+                  Próxima Obra em Destaque
+                </div>
+                <div className="font-display font-black text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-foreground group-hover:text-primary transition-colors">
+                  {next.title}
+                </div>
+                <div className="text-xs sm:text-sm text-concrete-600 mt-2">
+                  {next.type} · {next.location}
                 </div>
               </div>
-            ))}
+              <ArrowRight className="w-8 h-8 text-foreground group-hover:text-primary group-hover:translate-x-2 transition-all shrink-0" />
+            </Link>
           </div>
-        </section>
-      )}
-
-      {/* LIGHTBOX MODAL FOR GALLERY */}
-      {selectedImage && (
-        <div 
-          onClick={() => setSelectedImage(null)}
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
-        >
-          <button 
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-6 text-white hover:text-primary transition-colors p-2"
-          >
-            <X className="w-8 h-8" />
-          </button>
-          <img src={selectedImage} alt="Visualização expandida" className="max-w-full max-h-[90vh] object-contain shadow-2xl border border-white/10" />
         </div>
-      )}
-
-      {/* TESTIMONIAL IF AVAILABLE */}
-      {project.testimonial && (
-        <section className="bg-concrete-900 text-background py-32 border-t border-white/10">
-          <div className="container grid grid-cols-12 gap-8 items-center">
-            <div className="col-span-12 md:col-span-3">
-              <SectionLabel className="text-background/60">Reconhecimento</SectionLabel>
-            </div>
-            <div className="col-span-12 md:col-span-9">
-              <blockquote className="font-display font-medium text-3xl md:text-5xl tracking-tight leading-snug text-balance">
-                <span className="text-primary font-bold">"</span>{project.testimonial.quote}<span className="text-primary font-bold">"</span>
-              </blockquote>
-              <footer className="mt-8 font-mono text-xs uppercase tracking-[0.25em] text-primary font-bold">
-                {project.testimonial.author} — <span className="text-background/70 font-normal">{project.testimonial.role}</span>
-              </footer>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* NEXT PROJECT NAVIGATION */}
-      <section className="container py-24 border-t border-foreground/15">
-        <Link to={`/projetos/${next.slug}`} className="group flex items-center justify-between gap-6">
-          <div>
-            <div className="font-mono text-xs uppercase tracking-[0.25em] text-concrete-500 mb-2">Próxima Obra em Destaque</div>
-            <div className="font-display font-bold text-4xl md:text-6xl tracking-tight uppercase group-hover:text-primary transition-colors">
-              {next.title}
-            </div>
-            <p className="font-mono text-xs uppercase tracking-widest text-concrete-500 mt-1">{next.type} · {next.location}</p>
-          </div>
-          <ArrowRight className="h-10 w-10 text-foreground group-hover:text-primary group-hover:translate-x-3 transition-all shrink-0" />
-        </Link>
-      </section>
+      </div>
     </Layout>
   );
 };
