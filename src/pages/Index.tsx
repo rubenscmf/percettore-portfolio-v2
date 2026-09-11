@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ShieldCheck, HardHat, Compass, Layers } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { SectionLabel } from "@/components/SectionLabel";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
 import hero from "@/assets/hero.jpg";
+import about from "@/assets/about.jpg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -18,33 +19,6 @@ const partners = [
   { name: "Construtora Embraed", location: "Itapema · SC", project: "L'atelier Concept Homes" },
   { name: "Construtora Plaenge", location: "Campinas · SP", project: "Obra Tay & Obra Authentic" },
   { name: "FG Empreendimentos", location: "Balneário Camboriú · SC", project: "Iconi Tower" },
-];
-
-const constructionPhases = [
-  {
-    phase: "01",
-    title: "Superestrutura & Concreto C50/C60",
-    desc: "Moldagem contínua de pilares de alta carga e núcleos rígidos para suportar grandes solicitações dinâmicas de vento.",
-    spec: "FCK 50-60 MPa · Alta Resistência",
-    img: "/Obra Legacy/WhatsApp Image 2026-07-29 at 10.57.14 (3).jpeg",
-    icon: Layers,
-  },
-  {
-    phase: "02",
-    title: "Lajes Protendidas & Grandes Vãos",
-    desc: "Otimização de vãos livres de até 14 metros sem pilares intermediários, viabilizando plantas arquitetônicas amplas.",
-    spec: "Armaduras Protendidas · Vãos Livres",
-    img: "/Obra Latelie/WhatsApp Image 2026-07-28 at 16.02.39 (2).jpeg",
-    icon: Compass,
-  },
-  {
-    phase: "03",
-    title: "Controle Tecnológico & Desforma",
-    desc: "Monitoramento contínuo de cura, ensaios de rompimento de corpos de prova e garantia da vida útil de 100 anos.",
-    spec: "NBR 6118 / 14931 · Controle 100%",
-    img: "/Obra Tay/WhatsApp Image 2026-07-29 at 12.01.01 (1).jpeg",
-    icon: HardHat,
-  },
 ];
 
 const Index = () => {
@@ -71,11 +45,11 @@ const Index = () => {
       gsap.utils.toArray<HTMLElement>(".reveal-on-scroll").forEach((el) => {
         gsap.fromTo(
           el,
-          { opacity: 0, y: 35 },
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.85,
             ease: "power2.out",
             scrollTrigger: {
               trigger: el,
@@ -91,7 +65,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <div ref={containerRef} className="space-y-24 md:space-y-36 pb-24">
+      <div ref={containerRef} className="space-y-24 md:space-y-36 pb-20">
         {/* =========================================================================
             BLOCO 1: HERO ARQUITETÔNICO EDITORIAL (REFERÊNCIA TELA 1)
         ========================================================================= */}
@@ -245,20 +219,20 @@ const Index = () => {
         </section>
 
         {/* =========================================================================
-            BLOCO 3: POR QUE A PERCETTORE? (REFERÊNCIA TELA 2)
+            BLOCO 3: POR QUE A PERCETTORE? COM BANNER PANORÂMICO INTEGRADO (EXATO ANEXO)
         ========================================================================= */}
         <section className="relative overflow-hidden reveal-on-scroll">
           {/* GIANT WATERMARK TYPOGRAPHY */}
-          <div className="absolute top-8 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
+          <div className="absolute top-6 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
             <span className="watermark-text block font-display font-black text-[clamp(4.5rem,13vw,13rem)] text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap leading-none">
               por que percettore?
             </span>
           </div>
 
-          <div className="max-w-[1440px] mx-auto px-6 relative z-10">
-            <div className="border-b border-foreground/[0.08] pb-6 mb-12">
+          <div className="max-w-[1440px] mx-auto px-6 relative z-10 space-y-12">
+            <div className="border-b border-foreground/[0.08] pb-6">
               <SectionLabel index="03">
-                Sobre a Companhia · Manifesto
+                Sobre a Companhia · Manifesto Técnico
               </SectionLabel>
             </div>
 
@@ -289,8 +263,22 @@ const Index = () => {
               </div>
             </div>
 
-            {/* CLIENT / PARTNERS ARCHITECTURAL GRID (REFERÊNCIA TELA 2 BOTTOM) */}
-            <div className="mt-16 pt-12 border-t border-foreground/[0.08]">
+            {/* INTEGRATED PANORAMIC ARCHITECTURAL BANNER (EXATAMENTE COMO NA TELA SUPERIOR DO ANEXO) */}
+            <div className="relative aspect-[21/9] sm:aspect-[24/8] w-full rounded-sm overflow-hidden border border-foreground/[0.08] shadow-md bg-concrete-900">
+              <img
+                src="/Obra Legacy/WhatsApp Image 2026-07-29 at 10.57.14 (3).jpeg"
+                alt="Engenharia de superestrutura e concreto armado Percettore"
+                className="w-full h-full object-cover grayscale contrast-120"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/40" />
+              <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 right-6 flex items-center justify-between text-white text-xs font-mono tracking-widest uppercase">
+                <span>ESTRUTURA MONUMENTAL // FCK 50-60 MPA</span>
+                <span className="text-primary font-bold hidden sm:inline">NBR 6118 / NBR 14931</span>
+              </div>
+            </div>
+
+            {/* CLIENT / PARTNERS ARCHITECTURAL GRID */}
+            <div className="pt-8 border-t border-foreground/[0.08]">
               <div className="mb-6 font-sans text-xs font-semibold uppercase tracking-[0.25em] text-concrete-500">
                 Construtoras & Parceiros que Confiam no Nosso Cálculo:
               </div>
@@ -349,177 +337,129 @@ const Index = () => {
         </section>
 
         {/* =========================================================================
-            BLOCO 4.5: CANTEIRO & CONCRETO EM EVOLUÇÃO (DOCUMENTAÇÃO VISUAL DA CONSTRUÇÃO)
+            BLOCO 5: NOSSO DNA & VALORES COM ELEMENTO ESCULTURAL INTEGRADO (EXATO ANEXO INFERIOR)
         ========================================================================= */}
         <section className="relative overflow-hidden reveal-on-scroll">
           {/* GIANT WATERMARK TYPOGRAPHY */}
-          <div className="absolute top-8 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
-            <span className="watermark-text block font-display font-black text-[clamp(4rem,13vw,13rem)] text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap leading-none">
-              execucao em concreto armado
-            </span>
-          </div>
-
-          <div className="max-w-[1440px] mx-auto px-6 relative z-10">
-            <div className="border-b border-foreground/[0.08] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div>
-                <SectionLabel index="05">
-                  Canteiro & Rigor Construtivo
-                </SectionLabel>
-                <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-foreground mt-2">
-                  Estruturas em Execução
-                </h2>
-              </div>
-              <p className="font-sans text-xs uppercase tracking-widest text-concrete-500 max-w-sm text-pretty">
-                Fotografias reais das fases construtivas: armação, moldagem e controle tecnológico.
-              </p>
-            </div>
-
-            {/* 3 ILLUSTRATIVE CONSTRUCTION CARDS */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {constructionPhases.map((cp) => {
-                const IconComponent = cp.icon;
-                return (
-                  <div
-                    key={cp.phase}
-                    className="group bg-card border border-foreground/[0.08] rounded-sm overflow-hidden flex flex-col justify-between hover:border-primary/40 transition-all duration-300"
-                  >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-concrete-100">
-                      <img
-                        src={cp.img}
-                        alt={cp.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover grayscale contrast-115 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                      />
-                      <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider border border-foreground/10">
-                        FASE [{cp.phase}]
-                      </div>
-                    </div>
-
-                    <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-2 text-primary font-mono text-[11px] uppercase tracking-wider font-bold mb-1.5">
-                          <IconComponent className="w-3.5 h-3.5" />
-                          <span>{cp.spec}</span>
-                        </div>
-                        <h3 className="font-display font-bold text-xl uppercase tracking-tight text-foreground group-hover:text-primary transition-colors">
-                          {cp.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-concrete-600 leading-relaxed mt-2">
-                          {cp.desc}
-                        </p>
-                      </div>
-
-                      <div className="pt-3 border-t border-foreground/[0.06] text-[11px] font-mono text-concrete-500 flex items-center justify-between">
-                        <span>OBRA REAL ACOMPANHADA</span>
-                        <span className="text-primary font-bold">100% NORMATIZADO</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================================================
-            BLOCO 5: NOSSO DNA & PRINCÍPIOS (REFERÊNCIA TELAS 4 & 5)
-        ========================================================================= */}
-        <section className="relative overflow-hidden reveal-on-scroll">
-          {/* GIANT WATERMARK TYPOGRAPHY */}
-          <div className="absolute top-8 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
+          <div className="absolute top-6 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
             <span className="watermark-text block font-display font-black text-[clamp(4.5rem,14vw,14rem)] text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap leading-none">
               nosso dna tecnico
             </span>
           </div>
 
-          <div className="max-w-[1440px] mx-auto px-6 relative z-10">
-            <div className="border-b border-foreground/[0.08] pb-6 mb-12">
-              <SectionLabel index="06">
-                Valores Inegociáveis · Princípios
+          <div className="max-w-[1440px] mx-auto px-6 relative z-10 space-y-12">
+            <div className="border-b border-foreground/[0.08] pb-6">
+              <SectionLabel index="05">
+                Valores Inegociáveis · Nosso DNA
               </SectionLabel>
             </div>
 
-            <div className="max-w-3xl mb-12 space-y-4">
-              <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-foreground">
-                Desafios complexos formaram nosso <span className="text-primary">DNA</span>.
-              </h2>
-              <p className="text-concrete-600 text-base md:text-lg leading-relaxed">
-                Nosso caminho é uma história de consistência técnica: quando o mercado impôs estruturas mais altas,
-                grandes vãos livres e solicitações dinâmicas de vento, desenvolvemos metodologias de cálculo de padrão internacional.
-              </p>
-            </div>
-
-            {/* 3 PRINCIPLES CARDS */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-8 bg-card border border-foreground/[0.08] rounded-sm space-y-4 hover:border-primary/40 transition-colors">
-                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-sm font-bold">
-                  01
+            {/* 2-COLUMN SPLIT: TEXT/PRINCIPLES ON LEFT + CONCRETE STRUCTURAL SCULPTURE ON RIGHT */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              {/* LEFT: EDITORIAL THESIS & 3 VALUES */}
+              <div className="lg:col-span-7 space-y-8">
+                <div className="space-y-4">
+                  <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight text-foreground leading-[0.96]">
+                    Desafios complexos <br />
+                    moldaram nosso <span className="text-primary">DNA</span>.
+                  </h2>
+                  <p className="text-concrete-600 text-base md:text-lg leading-relaxed max-w-xl">
+                    Nosso caminho é uma história de consistência técnica: quando o mercado impôs estruturas mais altas,
+                    grandes vãos livres e solicitações dinâmicas de vento, desenvolvemos soluções de cálculo com tolerância zero para falhas.
+                  </p>
                 </div>
-                <h3 className="font-display font-bold text-2xl uppercase tracking-tight text-foreground">
-                  Rigor Absoluto
-                </h3>
-                <p className="text-sm text-concrete-600 leading-relaxed">
-                  Cada modelo tridimensional e armadura é revisada por uma segunda equipe sênior antes de ser liberada para a fôrma na obra.
-                </p>
+
+                {/* 3 CORE VALUES AS ELEGANT ROWS */}
+                <div className="space-y-4 pt-2">
+                  <div className="p-5 bg-card border border-foreground/[0.08] rounded-sm flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5">
+                      01
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-lg uppercase tracking-tight text-foreground">
+                        Rigor Absoluto no Cálculo
+                      </h3>
+                      <p className="text-xs sm:text-sm text-concrete-600 leading-relaxed mt-1">
+                        Cada modelo computacional e diagrama de armadura é revisado por uma segunda equipe sênior antes da emissão.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-5 bg-card border border-foreground/[0.08] rounded-sm flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5">
+                      02
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-lg uppercase tracking-tight text-foreground">
+                        Transparência em Canteiro
+                      </h3>
+                      <p className="text-xs sm:text-sm text-concrete-600 leading-relaxed mt-1">
+                        O cliente e o incorporador acompanham ensaios de rompimento e evolução em ambiente BIM 4D colaborativo.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-5 bg-card border border-foreground/[0.08] rounded-sm flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5">
+                      03
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-lg uppercase tracking-tight text-foreground">
+                        Vida Útil Secular (100 Anos)
+                      </h3>
+                      <p className="text-xs sm:text-sm text-concrete-600 leading-relaxed mt-1">
+                        Especificamos traços, cura e recobrimentos focando na durabilidade centenária das normas NBR 6118 e 14931.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-8 bg-card border border-foreground/[0.08] rounded-sm space-y-4 hover:border-primary/40 transition-colors">
-                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-sm font-bold">
-                  02
+              {/* RIGHT: INTEGRATED CONCRETE / ARCHITECTURAL SCULPTURE IMAGE (EXATO ESTILO ANEXO INFERIOR) */}
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-md aspect-[4/5] rounded-sm overflow-hidden border border-foreground/[0.08] bg-concrete-100 shadow-xl group">
+                  <img
+                    src="/Obra Latelie/WhatsApp Image 2026-07-28 at 16.02.38 (2).jpeg"
+                    alt="Escultura e solidez do concreto armado Percettore"
+                    className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                    <div className="font-mono text-xs text-primary font-bold">L'ATELIER CONCEPT HOMES</div>
+                    <div className="font-display text-lg font-bold uppercase">63 Pavimentos em Concreto</div>
+                  </div>
                 </div>
-                <h3 className="font-display font-bold text-2xl uppercase tracking-tight text-foreground">
-                  Transparência
-                </h3>
-                <p className="text-sm text-concrete-600 leading-relaxed">
-                  O cliente e a construtora acompanham a evolução dos ensaios tecnológicos e a compatibilização em ambiente BIM 4D colaborativo.
-                </p>
-              </div>
-
-              <div className="p-8 bg-card border border-foreground/[0.08] rounded-sm space-y-4 hover:border-primary/40 transition-colors">
-                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-mono text-sm font-bold">
-                  03
-                </div>
-                <h3 className="font-display font-bold text-2xl uppercase tracking-tight text-foreground">
-                  Vida Útil 100 Anos
-                </h3>
-                <p className="text-sm text-concrete-600 leading-relaxed">
-                  Especificamos traços, cura e recobrimentos focando na durabilidade centenária exigida pelas normas NBR 6118 e 14931.
-                </p>
               </div>
             </div>
           </div>
         </section>
 
         {/* =========================================================================
-            BLOCO 7: CTA DE COOPERAÇÃO (REFERÊNCIA TELA 3 BOTTOM)
+            BLOCO 6: CTA EDITORIAL LEVE (SEM QUADRO PRETO PESADO)
         ========================================================================= */}
         <section className="relative overflow-hidden reveal-on-scroll">
           <div className="max-w-[1440px] mx-auto px-6">
-            <div className="p-10 md:p-16 bg-foreground text-background rounded-sm relative overflow-hidden">
-              <div className="relative z-10 max-w-2xl space-y-6">
+            <div className="p-10 sm:p-14 md:p-16 bg-card border border-foreground/[0.08] rounded-sm flex flex-col md:flex-row md:items-center justify-between gap-8 shadow-sm">
+              <div className="space-y-3 max-w-2xl">
                 <div className="font-sans text-xs font-semibold uppercase tracking-[0.25em] text-primary">
                   [INICIAR DIÁLOGO TÉCNICO]
                 </div>
-                <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter uppercase leading-[0.95]">
+                <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-foreground leading-[0.98]">
                   É o momento ideal para calcular sua <span className="text-primary">estrutura</span>.
                 </h2>
-                <p className="text-concrete-300 text-base md:text-lg leading-relaxed">
-                  Converse diretamente com nossos engenheiros estruturais. Analisamos seu projeto arquitetônico e entregamos um diagnóstico de viabilidade.
+                <p className="text-concrete-600 text-base leading-relaxed">
+                  Converse diretamente com nossos engenheiros calculistas. Analisamos seu projeto de arquitetura e fornecemos diretrizes estruturais de viabilidade.
                 </p>
-                <div className="pt-4">
-                  <Link
-                    to="/contato"
-                    className="inline-flex items-center gap-3 bg-primary hover:bg-white hover:text-foreground text-white px-8 py-4 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-xl"
-                  >
-                    Falar com Engenheiro
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
               </div>
 
-              {/* WATERMARK ACCENT INSIDE CTA */}
-              <div className="absolute right-[-5%] bottom-[-20%] pointer-events-none select-none opacity-5 font-display font-black text-[16rem] uppercase tracking-tighter">
-                PERCETTORE
+              <div className="shrink-0">
+                <Link
+                  to="/contato"
+                  className="inline-flex items-center gap-3 bg-primary hover:bg-foreground text-white px-8 py-4 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Falar com Engenheiro
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
