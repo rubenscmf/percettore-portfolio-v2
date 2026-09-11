@@ -65,11 +65,11 @@ const Index = () => {
 
   return (
     <Layout>
-      <div ref={containerRef} className="space-y-24 md:space-y-36 pb-20">
+      <div ref={containerRef} className="space-y-12 sm:space-y-20 md:space-y-32 pb-20">
         {/* =========================================================================
             BLOCO 1: HERO ARQUITETÔNICO COM VÍDEO FULL BACKGROUND & GRADIENTE BRANCO
         ========================================================================= */}
-        <section className="relative min-h-[85vh] lg:min-h-[92vh] pt-32 sm:pt-40 md:pt-48 pb-20 flex flex-col justify-center overflow-hidden">
+        <section className="relative pt-24 pb-10 sm:pt-36 sm:pb-16 md:pt-44 md:pb-24 lg:min-h-[90vh] flex flex-col justify-center overflow-hidden">
           {/* FULL BACKGROUND ARCHITECTURAL VIDEO */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
             <video
@@ -414,18 +414,13 @@ const Index = () => {
               </div>
 
               {/* RIGHT: FLOATING REINFORCED CONCRETE NODE & TEST SPECIMENS (RECORTADOS LIVRES NO LAYOUT DO TEMA) */}
-              <div className="lg:col-span-5 relative flex items-center justify-center py-4">
-                <div className="relative w-full max-w-[520px] flex items-center justify-center">
+              <div className="lg:col-span-5 relative flex items-center justify-center py-2 sm:py-4">
+                <div className="relative w-full max-w-[460px] lg:max-w-[520px] flex items-center justify-center">
                   <img
                     src="/concrete-engineering-dna.png"
                     alt="Nó estrutural de concreto armado e corpos de prova de ensaio - Rigor e DNA Percettore"
                     className="w-full h-auto object-contain filter contrast-105 drop-shadow-md select-none pointer-events-none"
                   />
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-center pointer-events-none whitespace-nowrap">
-                    <span className="font-mono text-[10px] text-concrete-500 uppercase tracking-[0.25em]">
-                      [ NÓ ESTRUTURAL & CORPOS DE PROVA · CONTROLE TECNOLÓGICO ]
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
