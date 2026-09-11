@@ -119,10 +119,10 @@ const ProjectDetail = () => {
 
               <div className="space-y-1 pt-4 md:pt-0 md:pl-8">
                 <div className="font-sans text-[11px] uppercase tracking-[0.2em] text-concrete-500 font-bold">
-                  Normas & Vida Útil
+                  Normas & Rigor
                 </div>
                 <div className="font-display font-black text-2xl sm:text-3xl text-primary">
-                  100 Anos · NBR
+                  ABNT NBR 6118
                 </div>
               </div>
             </div>

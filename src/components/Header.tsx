@@ -65,7 +65,7 @@ export const Header = () => {
             to="/contato"
             className="inline-flex items-center gap-2 bg-primary hover:bg-foreground text-white px-5 py-2.5 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow"
           >
-            Falar com Engenheiro
+            Falar com a Percettore
             <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -103,7 +103,7 @@ export const Header = () => {
             to="/contato"
             className="inline-flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-full font-sans text-xs font-semibold uppercase tracking-wider mt-2"
           >
-            Falar com Engenheiro
+            Falar com a Percettore
           </Link>
         </nav>
       )}

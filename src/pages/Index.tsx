@@ -78,67 +78,71 @@ const Index = () => {
           </div>
 
           <div className="max-w-[1440px] mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              {/* LEFT COLUMN: EDITORIAL STATEMENT & CTA */}
-              <div className="lg:col-span-6 space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+              {/* LEFT: EDITORIAL STATEMENT */}
+              <div className="lg:col-span-7 space-y-6">
                 <SectionLabel index="01">
                   Engenharia Estrutural de Alto Padrão
                 </SectionLabel>
 
-                <h1 className="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-[0.94] text-foreground text-balance uppercase">
+                <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.92] text-foreground uppercase">
                   Estruturas <br />
                   de <span className="text-primary">Rigor</span>.
                 </h1>
+              </div>
 
-                <p className="text-lg md:text-xl text-concrete-700 font-normal leading-relaxed max-w-xl text-pretty">
+              {/* RIGHT: POSITIONING & ACTIONS */}
+              <div className="lg:col-span-5 space-y-6 pb-2">
+                <p className="text-base sm:text-lg text-concrete-600 font-normal leading-relaxed">
                   Atuamos como seu departamento estrutural de alta precisão:
                   eliminamos o caos de compatibilização, assumimos a responsabilidade
-                  técnica do cálculo à execução e garantimos que sua obra seja entregue rigorosamente no prazo.
+                  técnica do cálculo à execução e garantimos que sua obra seja entregue com máxima segurança.
                 </p>
 
-                <div className="pt-2 flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-center gap-4">
                   <Link
                     to="/contato"
-                    className="inline-flex items-center gap-3 bg-primary hover:bg-foreground text-white px-7 py-4 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg"
+                    className="inline-flex items-center gap-3 bg-primary hover:bg-foreground text-white px-7 py-3.5 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow"
                   >
-                    Calcular Meu Projeto
+                    Falar com a Percettore
                     <ArrowRight className="w-4 h-4" />
                   </Link>
 
                   <Link
                     to="/projetos"
-                    className="inline-flex items-center gap-2 text-foreground hover:text-primary font-sans text-xs font-semibold uppercase tracking-wider px-4 py-4 transition-colors"
+                    className="inline-flex items-center gap-2 text-foreground hover:text-primary font-sans text-xs font-semibold uppercase tracking-wider px-3 py-3 transition-colors"
                   >
                     Ver Obras Entregues
                     <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
+            </div>
 
-              {/* RIGHT COLUMN: HIGH-END VIDEO / RENDER SHOWCASE */}
-              <div className="lg:col-span-6">
-                <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-foreground/10 bg-concrete-100 shadow-xl">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    poster={hero}
-                    className="w-full h-full object-cover grayscale contrast-110"
-                  >
-                    <source src="/A_high_end_architectural_visua.mp4" type="video/mp4" />
-                    <img
-                      src={hero}
-                      alt="Estrutura de concreto armado Percettore"
-                      className="w-full h-full object-cover"
-                    />
-                  </video>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white text-xs font-mono tracking-wider">
-                    <span>SISTEMA ESTRUTURAL // NBR 6118</span>
-                    <span className="text-primary font-bold">100 ANOS DE VIDA ÚTIL</span>
-                  </div>
+            {/* WIDE CINEMATIC ARCHITECTURAL BANNER (INTEGRADO, ELIMINANDO O FORMATO QUADRADO) */}
+            <div className="mt-12 md:mt-16 relative w-full aspect-[21/9] sm:aspect-[24/9] rounded-sm overflow-hidden border border-foreground/[0.08] bg-concrete-900 group shadow-lg">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={hero}
+                className="w-full h-full object-cover grayscale contrast-115 group-hover:scale-105 transition-transform duration-1000"
+              >
+                <source src="/A_high_end_architectural_visua.mp4" type="video/mp4" />
+                <img
+                  src={hero}
+                  alt="Estrutura de concreto armado Percettore"
+                  className="w-full h-full object-cover"
+                />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-5 sm:bottom-6 sm:left-8 right-5 sm:right-8 flex items-center justify-between text-white text-xs font-mono tracking-widest uppercase">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="truncate">SISTEMA ESTRUTURAL // EXECUÇÃO EM CONCRETO ARMADO</span>
                 </div>
+                <span className="text-primary font-bold hidden md:inline">MÁXIMA DURABILIDADE · NBR 6118</span>
               </div>
             </div>
           </div>
@@ -205,7 +209,7 @@ const Index = () => {
                   Junte-se ao resultado de alta performance:
                 </div>
                 <div className="text-sm text-concrete-600">
-                  Otimização de consumo de aço e fôrmas, previsibilidade para o incorporador e segurança de 100 anos.
+                  Otimização de consumo de aço e fôrmas, previsibilidade para o incorporador e máxima durabilidade normativa.
                 </div>
               </div>
               <Link
@@ -242,7 +246,7 @@ const Index = () => {
                   Concreto não perdoa <span className="text-primary">erro de cálculo</span>.
                 </h2>
                 <p className="text-xl sm:text-2xl text-concrete-700 font-medium leading-snug">
-                  Por isso tratamos cada estrutura como patrimônio de vida útil secular.
+                  Por isso tratamos cada estrutura com máxima precisão geométrica e conformidade normativa.
                 </p>
               </div>
 
@@ -264,16 +268,16 @@ const Index = () => {
             </div>
 
             {/* INTEGRATED PANORAMIC ARCHITECTURAL BANNER (EXATAMENTE COMO NA TELA SUPERIOR DO ANEXO) */}
-            <div className="relative aspect-[21/9] sm:aspect-[24/8] w-full rounded-sm overflow-hidden border border-foreground/[0.08] shadow-md bg-concrete-900">
+            <div className="relative aspect-[21/9] sm:aspect-[24/8] w-full rounded-sm overflow-hidden border border-foreground/[0.08] shadow-sm bg-concrete-100">
               <img
-                src="/Obra Legacy/WhatsApp Image 2026-07-29 at 10.57.14 (3).jpeg"
-                alt="Engenharia de superestrutura e concreto armado Percettore"
-                className="w-full h-full object-cover grayscale contrast-120"
+                src="/architectural-panorama.jpg"
+                alt="Modelagem e perspectiva estrutural urbana Percettore"
+                className="w-full h-full object-cover grayscale contrast-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/40" />
-              <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 right-6 flex items-center justify-between text-white text-xs font-mono tracking-widest uppercase">
-                <span>ESTRUTURA MONUMENTAL // FCK 50-60 MPA</span>
-                <span className="text-primary font-bold hidden sm:inline">NBR 6118 / NBR 14931</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-6 sm:bottom-6 sm:left-8 right-6 flex items-center justify-between text-white text-xs font-mono tracking-widest uppercase">
+                <span>MODELAGEM ESTRUTURAL URBANA // BIM 4D</span>
+                <span className="text-primary font-bold hidden sm:inline">ABNT NBR 6118 / 14931</span>
               </div>
             </div>
 
@@ -354,13 +358,18 @@ const Index = () => {
               </SectionLabel>
             </div>
 
-            {/* 2-COLUMN SPLIT: TEXT/PRINCIPLES ON LEFT + CONCRETE STRUCTURAL SCULPTURE ON RIGHT */}
+            {/* 2-COLUMN SPLIT: TEXT/PRINCIPLES ON LEFT + FLOATING CONCRETE SCULPTURE ON RIGHT */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* LEFT: EDITORIAL THESIS & 3 VALUES */}
               <div className="lg:col-span-7 space-y-8">
                 <div className="space-y-4">
-                  <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight text-foreground leading-[0.96]">
-                    Desafios complexos <br />
+                  <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight text-foreground leading-[1.02]">
+                    Desafios{" "}
+                    <span className="inline-flex items-center align-middle mx-1 px-3 py-1 rounded-full bg-concrete-100 border border-foreground/10 text-[11px] font-mono font-bold tracking-widest text-primary shrink-0">
+                      <ShieldCheck className="w-3.5 h-3.5 mr-1" />
+                      BIM 4D
+                    </span>{" "}
+                    complexos <br />
                     moldaram nosso <span className="text-primary">DNA</span>.
                   </h2>
                   <p className="text-concrete-600 text-base md:text-lg leading-relaxed max-w-xl">
@@ -405,28 +414,33 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-display font-bold text-lg uppercase tracking-tight text-foreground">
-                        Vida Útil Secular (100 Anos)
+                        Durabilidade e Desempenho Normativo
                       </h3>
                       <p className="text-xs sm:text-sm text-concrete-600 leading-relaxed mt-1">
-                        Especificamos traços, cura e recobrimentos focando na durabilidade centenária das normas NBR 6118 e 14931.
+                        Especificamos traços de concreto, cura e recobrimentos focando na máxima longevidade e durabilidade exigidas pelas normas NBR 6118 e 14931.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* RIGHT: INTEGRATED CONCRETE / ARCHITECTURAL SCULPTURE IMAGE (EXATO ESTILO ANEXO INFERIOR) */}
-              <div className="lg:col-span-5 flex justify-center">
-                <div className="relative w-full max-w-md aspect-[4/5] rounded-sm overflow-hidden border border-foreground/[0.08] bg-concrete-100 shadow-xl group">
+              {/* RIGHT: FLOATING CONCRETE ARCHITECTURAL SCULPTURE (SEM QUADRO, SEM BORDA, TOTALMENTE INTEGRADA CONFORME ANEXO) */}
+              <div className="lg:col-span-5 relative flex items-center justify-center py-4">
+                {/* Elementos sutis de profundidade de campo (depth-of-field) do mockup */}
+                <div className="absolute top-2 left-6 w-16 h-12 rounded-full bg-concrete-300/30 blur-xl pointer-events-none" />
+                <div className="absolute bottom-4 right-6 w-24 h-16 rounded-full bg-concrete-400/25 blur-2xl pointer-events-none" />
+
+                {/* Escultura orgânica de concreto integrada diretamente na página */}
+                <div className="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
                   <img
-                    src="/Obra Latelie/WhatsApp Image 2026-07-28 at 16.02.38 (2).jpeg"
-                    alt="Escultura e solidez do concreto armado Percettore"
-                    className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+                    src="/concrete-sculpture.jpg"
+                    alt="Escultura em concreto estrutural bruto - Rigor Percettore"
+                    className="w-full h-full object-contain mix-blend-multiply filter contrast-110 drop-shadow-sm select-none pointer-events-none"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                    <div className="font-mono text-xs text-primary font-bold">L'ATELIER CONCEPT HOMES</div>
-                    <div className="font-display text-lg font-bold uppercase">63 Pavimentos em Concreto</div>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-center pointer-events-none whitespace-nowrap">
+                    <span className="font-mono text-[10px] text-concrete-500 uppercase tracking-[0.25em]">
+                      [ FORMA ESTRUTURAL · CONCRETO ARMADO ]
+                    </span>
                   </div>
                 </div>
               </div>
@@ -457,7 +471,7 @@ const Index = () => {
                   to="/contato"
                   className="inline-flex items-center gap-3 bg-primary hover:bg-foreground text-white px-8 py-4 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg"
                 >
-                  Falar com Engenheiro
+                  Falar com a Percettore
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

@@ -17,8 +17,8 @@ const values = [
   },
   {
     num: "03",
-    k: "Durabilidade Secular",
-    d: "Dimensionamos estruturas de concreto armado com foco na classe de agressividade ambiental e vida útil de projeto de 100 anos (NBR 6118 / 14931).",
+    k: "Durabilidade e Desempenho",
+    d: "Dimensionamos estruturas de concreto armado com foco na classe de agressividade ambiental, máxima durabilidade e conformidade rigorosa com a NBR 6118 e 14931.",
   },
 ];
 
@@ -175,7 +175,7 @@ const About = () => (
             to="/contato"
             className="inline-flex items-center gap-3 bg-primary hover:bg-white hover:text-foreground text-white px-7 py-4 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shrink-0"
           >
-            Falar com Engenheiro <ArrowRight className="w-4 h-4" />
+            Falar com a Percettore <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>

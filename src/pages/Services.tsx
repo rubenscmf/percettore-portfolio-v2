@@ -139,7 +139,7 @@ const Services = () => (
             to="/contato"
             className="inline-flex items-center gap-3 bg-primary hover:bg-white hover:text-foreground text-white px-7 py-4 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shrink-0"
           >
-            Falar com Engenheiro <ArrowRight className="w-4 h-4" />
+            Falar com a Percettore <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

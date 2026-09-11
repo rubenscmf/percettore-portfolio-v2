@@ -19,7 +19,7 @@ export const Footer = () => (
           <Logo className="text-3xl tracking-tighter" />
           <p className="text-concrete-600 text-sm leading-relaxed max-w-sm">
             Engenharia de precisão em estruturas de concreto armado de alta complexidade.
-            Segurança matemática, conformidade ABNT NBR e durabilidade secular para grandes obras.
+            Segurança matemática, conformidade ABNT NBR e alta durabilidade para grandes obras.
           </p>
           <div className="pt-2 flex items-center gap-2 text-xs font-mono text-concrete-500">
             <ShieldCheck className="w-4 h-4 text-primary" />
@@ -91,7 +91,7 @@ export const Footer = () => (
             to="/contato"
             className="inline-flex items-center justify-between w-full bg-primary hover:bg-foreground text-white px-5 py-3 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm"
           >
-            <span>Falar com Engenheiro</span>
+            <span>Falar com a Percettore</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
@@ -103,7 +103,7 @@ export const Footer = () => (
         <div className="flex items-center gap-6">
           <span>ABNT NBR 6118 / 14931</span>
           <span>·</span>
-          <span>100 Anos de Vida Útil</span>
+          <span>Máxima Durabilidade Estrutural</span>
         </div>
       </div>
     </div>
