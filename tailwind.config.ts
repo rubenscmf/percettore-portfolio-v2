@@ -12,12 +12,21 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Clash Display', 'Inter', 'sans-serif'],
-        display: ['Arboria', 'sans-serif'],
-        condensed: ['Arboria', 'sans-serif'],
-        serif: ['Clash Display', 'Inter', 'sans-serif'],
-        mono: ['Clash Display', 'Inter', 'sans-serif'],
-        small: ['Clash Display', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        condensed: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+        small: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+      },
+      fontWeight: {
+        black: "800",
+        extrabold: "800",
+        bold: "700",
+        semibold: "600",
+        medium: "500",
+        normal: "400",
+        light: "300",
       },
       colors: {
         border: "hsl(var(--border))",

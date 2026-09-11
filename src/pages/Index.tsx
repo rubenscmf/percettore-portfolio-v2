@@ -100,7 +100,7 @@ const Index = () => {
                 Engenharia Estrutural de Alto Padrão
               </SectionLabel>
 
-              <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.92] text-foreground uppercase">
+              <h1 className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.94] text-foreground uppercase">
                 Estruturas <br />
                 de <span className="text-primary">Rigor</span>.
               </h1>
