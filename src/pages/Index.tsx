@@ -67,82 +67,66 @@ const Index = () => {
     <Layout>
       <div ref={containerRef} className="space-y-24 md:space-y-36 pb-20">
         {/* =========================================================================
-            BLOCO 1: HERO ARQUITETÔNICO EDITORIAL (REFERÊNCIA TELA 1)
+            BLOCO 1: HERO ARQUITETÔNICO COM VÍDEO FULL BACKGROUND & GRADIENTE BRANCO
         ========================================================================= */}
-        <section className="relative pt-36 md:pt-48 overflow-hidden">
+        <section className="relative min-h-[85vh] lg:min-h-[92vh] pt-32 sm:pt-40 md:pt-48 pb-20 flex flex-col justify-center overflow-hidden">
+          {/* FULL BACKGROUND ARCHITECTURAL VIDEO */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={hero}
+              className="w-full h-full object-cover grayscale contrast-125 opacity-75"
+            >
+              <source src="/A_high_end_architectural_visua.mp4" type="video/mp4" />
+            </video>
+            {/* GRADIENT OVERLAYS: SOLID CRISP WHITE ON TEXT SIDE, GRADUAL REVEAL TO THE RIGHT */}
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 sm:via-background/90 md:via-background/80 to-background/25" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
+          </div>
+
           {/* GIANT WATERMARK TYPOGRAPHY BACKGROUND */}
-          <div className="absolute top-20 md:top-24 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
+          <div className="absolute top-20 md:top-24 left-0 w-full overflow-hidden pointer-events-none select-none z-[1]">
             <span className="watermark-text block font-display font-black text-[clamp(4.5rem,14vw,14rem)] text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap leading-none">
               estruturas de rigor materia inspired
             </span>
           </div>
 
-          <div className="max-w-[1440px] mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-              {/* LEFT: EDITORIAL STATEMENT */}
-              <div className="lg:col-span-7 space-y-6">
-                <SectionLabel index="01">
-                  Engenharia Estrutural de Alto Padrão
-                </SectionLabel>
+          <div className="max-w-[1440px] mx-auto px-6 relative z-10 w-full">
+            <div className="max-w-3xl space-y-8">
+              <SectionLabel index="01">
+                Engenharia Estrutural de Alto Padrão
+              </SectionLabel>
 
-                <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.92] text-foreground uppercase">
-                  Estruturas <br />
-                  de <span className="text-primary">Rigor</span>.
-                </h1>
-              </div>
+              <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.92] text-foreground uppercase">
+                Estruturas <br />
+                de <span className="text-primary">Rigor</span>.
+              </h1>
 
-              {/* RIGHT: POSITIONING & ACTIONS */}
-              <div className="lg:col-span-5 space-y-6 pb-2">
-                <p className="text-base sm:text-lg text-concrete-600 font-normal leading-relaxed">
-                  Atuamos como seu departamento estrutural de alta precisão:
-                  eliminamos o caos de compatibilização, assumimos a responsabilidade
-                  técnica do cálculo à execução e garantimos que sua obra seja entregue com máxima segurança.
-                </p>
+              <p className="text-lg md:text-xl text-concrete-700 font-normal leading-relaxed max-w-xl text-pretty">
+                Atuamos como seu departamento estrutural de alta precisão:
+                eliminamos o caos de compatibilização, assumimos a responsabilidade
+                técnica do cálculo à execução e garantimos que sua obra seja entregue com máxima segurança.
+              </p>
 
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link
-                    to="/contato"
-                    className="inline-flex items-center gap-3 bg-primary hover:bg-foreground text-white px-7 py-3.5 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow"
-                  >
-                    Falar com a Percettore
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <Link
+                  to="/contato"
+                  className="inline-flex items-center gap-3 bg-primary hover:bg-foreground text-white px-8 py-4 rounded-full font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Falar com a Percettore
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
 
-                  <Link
-                    to="/projetos"
-                    className="inline-flex items-center gap-2 text-foreground hover:text-primary font-sans text-xs font-semibold uppercase tracking-wider px-3 py-3 transition-colors"
-                  >
-                    Ver Obras Entregues
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* WIDE CINEMATIC ARCHITECTURAL BANNER (INTEGRADO, ELIMINANDO O FORMATO QUADRADO) */}
-            <div className="mt-12 md:mt-16 relative w-full aspect-[21/9] sm:aspect-[24/9] rounded-sm overflow-hidden border border-foreground/[0.08] bg-concrete-900 group shadow-lg">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                poster={hero}
-                className="w-full h-full object-cover grayscale contrast-115 group-hover:scale-105 transition-transform duration-1000"
-              >
-                <source src="/A_high_end_architectural_visua.mp4" type="video/mp4" />
-                <img
-                  src={hero}
-                  alt="Estrutura de concreto armado Percettore"
-                  className="w-full h-full object-cover"
-                />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
-              <div className="absolute bottom-4 left-5 sm:bottom-6 sm:left-8 right-5 sm:right-8 flex items-center justify-between text-white text-xs font-mono tracking-widest uppercase">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  <span className="truncate">SISTEMA ESTRUTURAL // EXECUÇÃO EM CONCRETO ARMADO</span>
-                </div>
-                <span className="text-primary font-bold hidden md:inline">MÁXIMA DURABILIDADE · NBR 6118</span>
+                <Link
+                  to="/projetos"
+                  className="inline-flex items-center gap-2 text-foreground hover:text-primary font-sans text-xs font-semibold uppercase tracking-wider px-5 py-4 transition-colors"
+                >
+                  Ver Obras Entregues
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
@@ -267,17 +251,22 @@ const Index = () => {
               </div>
             </div>
 
-            {/* INTEGRATED PANORAMIC ARCHITECTURAL BANNER (EXATAMENTE COMO NA TELA SUPERIOR DO ANEXO) */}
-            <div className="relative aspect-[21/9] sm:aspect-[24/8] w-full rounded-sm overflow-hidden border border-foreground/[0.08] shadow-sm bg-concrete-100">
-              <img
-                src="/architectural-panorama.jpg"
-                alt="Modelagem e perspectiva estrutural urbana Percettore"
-                className="w-full h-full object-cover grayscale contrast-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-6 sm:bottom-6 sm:left-8 right-6 flex items-center justify-between text-white text-xs font-mono tracking-widest uppercase">
-                <span>MODELAGEM ESTRUTURAL URBANA // BIM 4D</span>
-                <span className="text-primary font-bold hidden sm:inline">ABNT NBR 6118 / 14931</span>
+            {/* LAYERED TYPOGRAPHY & 3D CUTOUT BUILDINGS (PREDIOS ENCOBRINDO PARTE DO TEXTO CONFORME ANEXO) */}
+            <div className="relative pt-6 sm:pt-10 overflow-hidden">
+              {/* GIANT STATEMENT IN THE BACKGROUND */}
+              <div className="text-center sm:text-left select-none pointer-events-none">
+                <span className="font-display font-black text-[clamp(4.2rem,12.5vw,13rem)] text-foreground/[0.08] uppercase tracking-tighter whitespace-nowrap leading-[0.85] block">
+                  por que percettore?
+                </span>
+              </div>
+
+              {/* RECORTADO 3D BUILDINGS MODEL OVERLAPPING AND NATURALLY COVERING THE BOTTOM OF THE TEXT */}
+              <div className="relative -mt-16 sm:-mt-24 md:-mt-36 lg:-mt-48 z-10 w-full flex justify-center pointer-events-none select-none">
+                <img
+                  src="/city-cutout.png"
+                  alt="Modelagem de edifícios e torres em concreto armado Percettore"
+                  className="w-full max-w-[1400px] object-contain drop-shadow-sm filter contrast-105"
+                />
               </div>
             </div>
 
@@ -424,22 +413,17 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* RIGHT: FLOATING CONCRETE ARCHITECTURAL SCULPTURE (SEM QUADRO, SEM BORDA, TOTALMENTE INTEGRADA CONFORME ANEXO) */}
+              {/* RIGHT: FLOATING HELMET & FOOTBALL BALLS (RECORTADOS LIVRES NO LAYOUT CONFORME ANEXO) */}
               <div className="lg:col-span-5 relative flex items-center justify-center py-4">
-                {/* Elementos sutis de profundidade de campo (depth-of-field) do mockup */}
-                <div className="absolute top-2 left-6 w-16 h-12 rounded-full bg-concrete-300/30 blur-xl pointer-events-none" />
-                <div className="absolute bottom-4 right-6 w-24 h-16 rounded-full bg-concrete-400/25 blur-2xl pointer-events-none" />
-
-                {/* Escultura orgânica de concreto integrada diretamente na página */}
-                <div className="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
+                <div className="relative w-full max-w-[520px] flex items-center justify-center">
                   <img
-                    src="/concrete-sculpture.jpg"
-                    alt="Escultura em concreto estrutural bruto - Rigor Percettore"
-                    className="w-full h-full object-contain mix-blend-multiply filter contrast-110 drop-shadow-sm select-none pointer-events-none"
+                    src="/helmet-composition.png"
+                    alt="Capacete e elementos estruturais de concreto armado - Composição livre Percettore"
+                    className="w-full h-auto object-contain filter contrast-105 drop-shadow-md select-none pointer-events-none"
                   />
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-center pointer-events-none whitespace-nowrap">
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-center pointer-events-none whitespace-nowrap">
                     <span className="font-mono text-[10px] text-concrete-500 uppercase tracking-[0.25em]">
-                      [ FORMA ESTRUTURAL · CONCRETO ARMADO ]
+                      [ RESILIÊNCIA ESTRUTURAL · CONCRETO ARMADO ]
                     </span>
                   </div>
                 </div>
