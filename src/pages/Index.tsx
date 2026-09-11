@@ -413,17 +413,17 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* RIGHT: FLOATING HELMET & FOOTBALL BALLS (RECORTADOS LIVRES NO LAYOUT CONFORME ANEXO) */}
+              {/* RIGHT: FLOATING REINFORCED CONCRETE NODE & TEST SPECIMENS (RECORTADOS LIVRES NO LAYOUT DO TEMA) */}
               <div className="lg:col-span-5 relative flex items-center justify-center py-4">
                 <div className="relative w-full max-w-[520px] flex items-center justify-center">
                   <img
-                    src="/helmet-composition.png"
-                    alt="Capacete e elementos estruturais de concreto armado - Composição livre Percettore"
+                    src="/concrete-engineering-dna.png"
+                    alt="Nó estrutural de concreto armado e corpos de prova de ensaio - Rigor e DNA Percettore"
                     className="w-full h-auto object-contain filter contrast-105 drop-shadow-md select-none pointer-events-none"
                   />
                   <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-center pointer-events-none whitespace-nowrap">
                     <span className="font-mono text-[10px] text-concrete-500 uppercase tracking-[0.25em]">
-                      [ RESILIÊNCIA ESTRUTURAL · CONCRETO ARMADO ]
+                      [ NÓ ESTRUTURAL & CORPOS DE PROVA · CONTROLE TECNOLÓGICO ]
                     </span>
                   </div>
                 </div>
