@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ShieldCheck, HardHat, Compass, Layers } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { SectionLabel } from "@/components/SectionLabel";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -18,6 +18,33 @@ const partners = [
   { name: "Construtora Embraed", location: "Itapema · SC", project: "L'atelier Concept Homes" },
   { name: "Construtora Plaenge", location: "Campinas · SP", project: "Obra Tay & Obra Authentic" },
   { name: "FG Empreendimentos", location: "Balneário Camboriú · SC", project: "Iconi Tower" },
+];
+
+const constructionPhases = [
+  {
+    phase: "01",
+    title: "Superestrutura & Concreto C50/C60",
+    desc: "Moldagem contínua de pilares de alta carga e núcleos rígidos para suportar grandes solicitações dinâmicas de vento.",
+    spec: "FCK 50-60 MPa · Alta Resistência",
+    img: "/Obra Legacy/WhatsApp Image 2026-07-29 at 10.57.14 (3).jpeg",
+    icon: Layers,
+  },
+  {
+    phase: "02",
+    title: "Lajes Protendidas & Grandes Vãos",
+    desc: "Otimização de vãos livres de até 14 metros sem pilares intermediários, viabilizando plantas arquitetônicas amplas.",
+    spec: "Armaduras Protendidas · Vãos Livres",
+    img: "/Obra Latelie/WhatsApp Image 2026-07-28 at 16.02.39 (2).jpeg",
+    icon: Compass,
+  },
+  {
+    phase: "03",
+    title: "Controle Tecnológico & Desforma",
+    desc: "Monitoramento contínuo de cura, ensaios de rompimento de corpos de prova e garantia da vida útil de 100 anos.",
+    spec: "NBR 6118 / 14931 · Controle 100%",
+    img: "/Obra Tay/WhatsApp Image 2026-07-29 at 12.01.01 (1).jpeg",
+    icon: HardHat,
+  },
 ];
 
 const Index = () => {
@@ -322,6 +349,79 @@ const Index = () => {
         </section>
 
         {/* =========================================================================
+            BLOCO 4.5: CANTEIRO & CONCRETO EM EVOLUÇÃO (DOCUMENTAÇÃO VISUAL DA CONSTRUÇÃO)
+        ========================================================================= */}
+        <section className="relative overflow-hidden reveal-on-scroll">
+          {/* GIANT WATERMARK TYPOGRAPHY */}
+          <div className="absolute top-8 left-0 w-full overflow-hidden pointer-events-none select-none z-0">
+            <span className="watermark-text block font-display font-black text-[clamp(4rem,13vw,13rem)] text-foreground/[0.03] uppercase tracking-tighter whitespace-nowrap leading-none">
+              execucao em concreto armado
+            </span>
+          </div>
+
+          <div className="max-w-[1440px] mx-auto px-6 relative z-10">
+            <div className="border-b border-foreground/[0.08] pb-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <SectionLabel index="05">
+                  Canteiro & Rigor Construtivo
+                </SectionLabel>
+                <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-foreground mt-2">
+                  Estruturas em Execução
+                </h2>
+              </div>
+              <p className="font-sans text-xs uppercase tracking-widest text-concrete-500 max-w-sm text-pretty">
+                Fotografias reais das fases construtivas: armação, moldagem e controle tecnológico.
+              </p>
+            </div>
+
+            {/* 3 ILLUSTRATIVE CONSTRUCTION CARDS */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {constructionPhases.map((cp) => {
+                const IconComponent = cp.icon;
+                return (
+                  <div
+                    key={cp.phase}
+                    className="group bg-card border border-foreground/[0.08] rounded-sm overflow-hidden flex flex-col justify-between hover:border-primary/40 transition-all duration-300"
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-concrete-100">
+                      <img
+                        src={cp.img}
+                        alt={cp.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover grayscale contrast-115 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                      />
+                      <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider border border-foreground/10">
+                        FASE [{cp.phase}]
+                      </div>
+                    </div>
+
+                    <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 text-primary font-mono text-[11px] uppercase tracking-wider font-bold mb-1.5">
+                          <IconComponent className="w-3.5 h-3.5" />
+                          <span>{cp.spec}</span>
+                        </div>
+                        <h3 className="font-display font-bold text-xl uppercase tracking-tight text-foreground group-hover:text-primary transition-colors">
+                          {cp.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-concrete-600 leading-relaxed mt-2">
+                          {cp.desc}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-foreground/[0.06] text-[11px] font-mono text-concrete-500 flex items-center justify-between">
+                        <span>OBRA REAL ACOMPANHADA</span>
+                        <span className="text-primary font-bold">100% NORMATIZADO</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================================
             BLOCO 5: NOSSO DNA & PRINCÍPIOS (REFERÊNCIA TELAS 4 & 5)
         ========================================================================= */}
         <section className="relative overflow-hidden reveal-on-scroll">
@@ -334,7 +434,7 @@ const Index = () => {
 
           <div className="max-w-[1440px] mx-auto px-6 relative z-10">
             <div className="border-b border-foreground/[0.08] pb-6 mb-12">
-              <SectionLabel index="05">
+              <SectionLabel index="06">
                 Valores Inegociáveis · Princípios
               </SectionLabel>
             </div>
@@ -391,7 +491,7 @@ const Index = () => {
         </section>
 
         {/* =========================================================================
-            BLOCO 6: CTA DE COOPERAÇÃO (REFERÊNCIA TELA 3 BOTTOM)
+            BLOCO 7: CTA DE COOPERAÇÃO (REFERÊNCIA TELA 3 BOTTOM)
         ========================================================================= */}
         <section className="relative overflow-hidden reveal-on-scroll">
           <div className="max-w-[1440px] mx-auto px-6">
